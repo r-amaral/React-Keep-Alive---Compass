@@ -35,34 +35,51 @@ const Icon = styled.i`
     transition: .4s;
 `
 
-const IconInside = styled(Icon)`
-    margin-left: ${({ inputValue }: any) => inputValue ? '-40px' : '18px'};
+const IconUser = styled(Icon)`
+  margin-left: ${({ iconUser }: any) => iconUser ? '-40px' : '18px'};
+`
+
+const IconPassword = styled(Icon)`
+ margin-left: ${({ iconPassword }: any) => iconPassword ? '-40px' : '18px'};
 `
 
 export default function Form() {
 
-    const [inputValue, setInputValue] = useState(false);
+    const [iconUser, setIconUser] = useState<string>('');
+    const [iconPassword, setIconPassword] = useState<string>('');
+    const [invalidLogin, setinvalidLogin] = useState<boolean>(false);
+
+    function validation(event: any) {
+
+        event.preventDefault();
+
+        let regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
+
+        if (regEmail.test(iconUser)) return setinvalidLogin(true)
+    }
 
     return (
         <FormLogin>
             <FormTitle>Login</FormTitle>
             <ContainerInput>
                 <Input
-                    onChange={(event) => event.target.value != '' ? setInputValue(true) : setInputValue(false)}
-                    type='text'
-                    placeholder='Usuário'
-                />
-                <Icon inputValue={inputValue} user />
+                    onChange={event => setIconUser(event.target.value)}
+                    value={iconUser}
+                    type='text' placeholder='Usuário' />
+                <IconUser iconUser={iconUser} user />
             </ContainerInput>
             <ContainerInput>
                 <Input
-                    onChange={(event) => event.target.value != '' ? setInputValue(true) : setInputValue(false)}
+                    onChange={event => setIconPassword(event.target.value)}
+                    value={iconPassword}
                     type='password'
-                    placeholder='Senha'
-                />
-                <Icon inputValue={inputValue} />
+                    placeholder='Senha' />
+                <IconPassword iconPassword={iconPassword} />
             </ContainerInput>
-            <Button>Continuar</Button>
+
+            {/* {invalidLogin ? <span>Ops, usuário ou senha inválidos. Tente novamente!</span> : <span>Passou</span>} */}
+
+            <Button onClick={validation}>Continuar</Button>
         </FormLogin >
     )
 }
