@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { primaryColor } from '../../UI/variables';
 
-const Input = styled.input`
-    border: 1px solid #FFFFFF;
+interface IInput {
+    invalidLogin: boolean | any;
+}
+
+const Input = styled.input<IInput>`
+    border: 1px solid ${({ invalidLogin }: any) => invalidLogin ? '#E9B425' : '#FFFFFF'} ;
     border-radius: 50px;
     height: 60px;
     color: ${primaryColor};

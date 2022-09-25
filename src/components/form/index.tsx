@@ -1,10 +1,16 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { primaryColor } from '../UI/variables';
 import UserIcon from '../../assets/images/icon-user.svg'
 import PasswordIcon from '../../assets/images/icon-password.svg'
 import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
+
+interface IIcon {
+    iconUser: string;
+    iconPassword: string;
+    user: boolean;
+}
 
 const FormTitle = styled.h3`
     font-weight: normal;
@@ -25,7 +31,7 @@ const ContainerInput = styled.div`
     margin-top:32px;
 `
 
-const Icon = styled.i`
+const Icon = styled.i<IIcon>`
     background-image:url(${({ user }: any) => user ? UserIcon : PasswordIcon});
     position: absolute;
     width: 20px;
@@ -43,19 +49,30 @@ const IconPassword = styled(Icon)`
  margin-left: ${({ iconPassword }: any) => iconPassword ? '-40px' : '18px'};
 `
 
+const InvalidText = styled.span`
+    margin-top: 28px;
+    color: #E9B425;
+    text-align: center;
+    font-weight:700;
+    width: 90%;
+`
+
 export default function Form() {
 
-    const [iconUser, setIconUser] = useState<string>('');
-    const [iconPassword, setIconPassword] = useState<string>('');
+    const [user, setIconUser] = useState<string>('');
+    const [password, setIconPassword] = useState<string>('');
     const [invalidLogin, setinvalidLogin] = useState<boolean>(false);
 
-    function validation(event: any) {
+    const validation = (event: any) => {
 
         event.preventDefault();
 
         let regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
 
-        if (regEmail.test(iconUser)) return setinvalidLogin(true)
+        if (regEmail.test(user) && password.length > 3) {
+            return setinvalidLogin(false)
+        } else return setinvalidLogin(true)
+
     }
 
     return (
@@ -63,21 +80,26 @@ export default function Form() {
             <FormTitle>Login</FormTitle>
             <ContainerInput>
                 <Input
-                    onChange={event => setIconUser(event.target.value)}
-                    value={iconUser}
-                    type='text' placeholder='Usuário' />
-                <IconUser iconUser={iconUser} user />
+                    onChange={(event: any) => setIconUser(event.target.value)}
+                    value={user}
+                    type='text'
+                    placeholder='Usuário'
+                    invalidLogin={invalidLogin}
+                />
+                <IconUser iconUser={user} user />
             </ContainerInput>
             <ContainerInput>
                 <Input
-                    onChange={event => setIconPassword(event.target.value)}
-                    value={iconPassword}
+                    onChange={(event: any) => setIconPassword(event.target.value)}
+                    value={password}
                     type='password'
-                    placeholder='Senha' />
-                <IconPassword iconPassword={iconPassword} />
+                    placeholder='Senha'
+                    invalidLogin={invalidLogin}
+                />
+                <IconPassword iconPassword={password} />
             </ContainerInput>
 
-            {/* {invalidLogin ? <span>Ops, usuário ou senha inválidos. Tente novamente!</span> : <span>Passou</span>} */}
+            {invalidLogin ? <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText> : ''}
 
             <Button onClick={validation}>Continuar</Button>
         </FormLogin >
