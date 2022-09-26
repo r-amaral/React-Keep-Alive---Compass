@@ -5,8 +5,8 @@ import { FormTitle, FormLogin, ContainerInput, IconUser, IconPassword, InvalidTe
 
 export default function Form() {
 
-    const [user, setIconUser] = useState<string>('');
-    const [password, setIconPassword] = useState<string>('');
+    const [user, setUser] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const [invalidLogin, setinvalidLogin] = useState<boolean>(false);
 
     const validation = (event: FormEvent<HTMLFormElement> | any) => {
@@ -25,21 +25,23 @@ export default function Form() {
             <FormTitle>Login</FormTitle>
             <ContainerInput>
                 <Input
-                    onChange={(event: any) => setIconUser(event.target.value)}
+                    onChange={(event: any) => setUser(event.target.value)}
                     value={user}
                     type='text'
                     placeholder='Usuário'
                     invalidLogin={invalidLogin}
+                    required
                 />
                 <IconUser iconUser={user} user />
             </ContainerInput>
             <ContainerInput>
                 <Input
-                    onChange={(event: any) => setIconPassword(event.target.value)}
+                    onChange={(event: any) => setPassword(event.target.value)}
                     value={password}
                     type='password'
                     placeholder='Senha'
                     invalidLogin={invalidLogin}
+                    required
                 />
                 <IconPassword iconPassword={password} />
             </ContainerInput>

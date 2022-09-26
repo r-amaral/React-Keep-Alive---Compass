@@ -1,8 +1,6 @@
 import Form from '../../components/Form';
-import 'normalize.css';
 import compassLogo from '../../assets/images/Logo-Compass.png';
-
-import { Login, H1, Paragraph, Banner, Container, CompassLogo, Header } from './style'
+import { Login, H1, Paragraph, Banner, Container, CompassLogo, Header } from './style';
 
 function App() {
   return (

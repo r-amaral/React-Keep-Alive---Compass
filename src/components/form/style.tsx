@@ -1,7 +1,7 @@
 import styled, { StyledComponent } from 'styled-components';
 import { primaryColor } from '../UI/variables';
-import UserIcon from '../../assets/images/icon-user.svg'
-import PasswordIcon from '../../assets/images/icon-password.svg'
+import UserIcon from '../../assets/icons/icon-user.svg'
+import PasswordIcon from '../../assets/icons/icon-password.svg'
 import { IIcon } from '../../interface/IIcon';
 
 export const FormTitle = styled.h3`
@@ -42,9 +42,10 @@ export const IconPassword = styled(Icon)`
 `
 
 export const InvalidText = styled.span`
+    align-self:center;
     margin-top: 28px;
     color: #E9B425;
     text-align: center;
     font-weight:700;
-    width: 90%;
+    width: 70%;
 `
