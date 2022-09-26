@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { primaryColor } from '../../UI/variables';
-
-interface IInput {
-    invalidLogin: boolean | any;
-    type: string;
-}
+import { IInput } from '../../../interface/IInput';
 
 const Input = styled.input<IInput>`
     border: 1px solid ${({ invalidLogin }: any) => invalidLogin ? '#E9B425' : '#FFFFFF'} ;

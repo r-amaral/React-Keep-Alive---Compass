@@ -1,5 +1,5 @@
-import React from "react";
 import styled from 'styled-components';
+import { IText } from '../../interface/IText';
 
 const BoxText = styled.div`
 display: flex;
@@ -20,11 +20,7 @@ color: #222222;
 line-height: 20px;
 `
 
-interface IText {
-    title: string;
-    translate: string;
-    size: number
-}
+
 
 export default function Text({ title, translate, size }: IText) {
     return (
