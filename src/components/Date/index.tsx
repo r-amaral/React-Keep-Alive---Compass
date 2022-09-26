@@ -1,26 +1,4 @@
-import React, { useState } from "react";
-import styled from 'styled-components';
-
-const Container = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-`
-
-const Time = styled.div`
-font-weight: 700;
-font-size: 144px;
-line-height: 100px;
-color: #222222;
-`
-
-const DataInfo = styled.div`
-font-weight: 400;
-font-size: 14px;
-color: #222222;
-line-height: 18px;
-`
+import { Container, Time, DataInfo } from './style'
 
 export default function CurrentDate() {
 
@@ -37,7 +15,7 @@ export default function CurrentDate() {
 
     return (
         <Container>
-            <Time>{`${currentHour}:${currentMinutes < 10 ? '0' + currentMinutes : currentMinutes}`}</Time>
+            <Time>{`${currentHour < 10 ? '0' + currentHour : currentHour}:${currentMinutes < 10 ? '0' + currentMinutes : currentMinutes}`}</Time>
             <DataInfo>{`${dayOfTheWeek[currentDay]}, ${currentDate} de ${month[currentMonth]} de ${currentYear}`}</DataInfo>
         </Container>
     )
