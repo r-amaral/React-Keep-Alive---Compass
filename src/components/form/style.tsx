@@ -31,15 +31,9 @@ export const Icon = styled.i<IIcon>`
     background-repeat: no-repeat;
     top: 16px;
     transition: .4s;
+    margin-left: ${({ Icon }: any) => Icon ? '-40px' : '18px'};
 `
 
-export const IconUser = styled(Icon)`
-  margin-left: ${({ iconUser }: any) => iconUser ? '-40px' : '18px'};
-`
-
-export const IconPassword = styled(Icon)`
- margin-left: ${({ iconPassword }: any) => iconPassword ? '-40px' : '18px'};
-`
 
 export const InvalidText = styled.span`
     align-self:center;

@@ -1,5 +1,4 @@
 export interface IIcon {
-    iconUser: string;
-    iconPassword: string;
+    Icon: string;
     user: boolean;
 }

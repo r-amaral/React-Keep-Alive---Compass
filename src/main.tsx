@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Login from './pages/Login';
 import 'normalize.css';
 import './index.css';
-import Home from './pages/Home';
+import Router from './router';
+import { BrowserRouter } from 'react-router-dom';
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    {/* <Login /> */}
-    <Home />
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   </React.StrictMode>
 )
+
+
+

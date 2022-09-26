@@ -2,7 +2,7 @@ import { primaryColor } from '../../components/UI/variables';
 import banner from '../../assets/images/img.png';
 import styled from 'styled-components';
 
-export const Login = styled.section`
+export const Section = styled.section`
   background: linear-gradient(180deg, #33383D 0%, #1C1D20 100%);
   height: 100vh;
   width: 50%;

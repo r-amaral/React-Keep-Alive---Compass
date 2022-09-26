@@ -3,6 +3,7 @@ import { primaryColor } from '../../UI/variables';
 
 interface IInput {
     invalidLogin: boolean | any;
+    type: string;
 }
 
 const Input = styled.input<IInput>`

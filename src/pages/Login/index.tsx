@@ -1,17 +1,17 @@
 import Form from '../../components/Form';
 import compassLogo from '../../assets/images/Logo-Compass.png';
-import { Login, H1, Paragraph, Banner, Container, CompassLogo, Header } from './style';
+import { Section, H1, Paragraph, Banner, Container, CompassLogo, Header } from './style';
 
-function App() {
+function Login() {
   return (
     <Container>
-      <Login>
+      <Section>
         <Header>
           <H1>Olá,</H1>
           <Paragraph>Para continuar navegando de forma segura, efetue o login na rede.</Paragraph>
         </Header>
         <Form />
-      </Login>
+      </Section>
 
       <Banner >
         <CompassLogo src={compassLogo} alt="Logo da compasso" />
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
