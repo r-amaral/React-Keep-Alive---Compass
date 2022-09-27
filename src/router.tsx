@@ -4,8 +4,8 @@ import Home from './pages/Home'
 export default function Router() {
     return (
         <Routes>
-            <Route path='/' element={<App />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/sasa' element={<App />} />
+            <Route path='/' element={<Home />} />
         </Routes>
     )
 }

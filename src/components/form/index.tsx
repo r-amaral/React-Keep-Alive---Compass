@@ -8,7 +8,7 @@ export default function Form() {
 
     const [user, setUser] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [invalidLogin, setinvalidLogin] = useState<boolean>(false);
+    const [logged, setLogged] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
@@ -19,9 +19,9 @@ export default function Form() {
         let regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
 
         if (regEmail.test(user) && password.length > 3) {
-            setinvalidLogin(false)
+            setLogged(false)
             navigate('/home')
-        } else setinvalidLogin(true)
+        } else setLogged(true)
     }
 
     return (
@@ -32,7 +32,7 @@ export default function Form() {
                     onChange={(event: any) => setUser(event.target.value)}
                     type='text'
                     placeholder='Usuário'
-                    invalidLogin={invalidLogin}
+                    invalidLogin={logged}
                 />
                 <Icon Icon={user} user />
             </ContainerInput>
@@ -41,12 +41,12 @@ export default function Form() {
                     onChange={(event: any) => setPassword(event.target.value)}
                     type='password'
                     placeholder='Senha'
-                    invalidLogin={invalidLogin}
+                    invalidLogin={logged}
                 />
                 <Icon Icon={password} user={false} />
             </ContainerInput>
 
-            {invalidLogin ? <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText> : ''}
+            {logged ? <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText> : ''}
 
             <Button>Continuar</Button>
         </FormLogin >

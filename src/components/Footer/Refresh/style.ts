@@ -5,6 +5,7 @@ display: flex;
 align-items: center;
 color: #FFFFFF;
 margin-left:12%;
+box-sizing: border-box;
 `
 
 export const Text = styled.span`

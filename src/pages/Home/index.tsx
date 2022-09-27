@@ -4,8 +4,26 @@ import CurrentDate from "../../components/Date";
 import Text from "../../components/TextHome";
 import Footer from '../../components/Footer';
 import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText } from './style';
+import { useEffect, useState } from 'react';
+import PopUp from '../../components/Pop-Up';
 
 export default function Home() {
+
+    const [city, setCity] = useState<any>({});
+    const [pop, setPop] = useState<boolean>(false);
+    const [locate, setLocate] = useState<boolean>(false);
+
+    let url = locate ? "https://www.iplocate.io/api/lookup" : "https://www.iplocate.io/api/lookup/185.61.218.198";
+
+    useEffect(() => {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                setCity(data)
+                console.log(data)
+            })
+    }, [locate])
+
 
     const textHome = [
         {
@@ -27,11 +45,18 @@ export default function Home() {
     ]
 
     return (
+
         <Container>
+            <PopUp setLocate={setLocate} pop={pop} setPop={setPop} />
             <Header>
                 <ImgLogoCompass src={logoCompass} alt="Logo Compass" />
                 <CurrentDate />
-                <div style={{ justifySelf: "flex-end" }} className="clima">12G</div>
+                <div style={{ justifySelf: "flex-end" }} className="clima">
+
+                    {city['city']}
+
+                </div>
+
             </Header>
             <Section>
                 <MainLogo src={MainLogoCompass} alt="Logo Compass" />

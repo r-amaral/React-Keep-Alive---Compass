@@ -10,6 +10,13 @@ export const Section = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 15.2%;
+  padding-right: 15.2%;
+
+  @media screen and (max-width:768px) {
+   width: 100%;
+  }
 `
 
 export const H1 = styled.h1`
@@ -37,6 +44,10 @@ export const Banner = styled.section`
   width: 50%;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width:768px) {
+    display: none;
+  }
 `
 
 export const Container = styled.div`
@@ -50,5 +61,5 @@ export const CompassLogo = styled.img`
 `
 
 export const Header = styled.div`
-  width:40%;
+  /* width:40%; */
 `

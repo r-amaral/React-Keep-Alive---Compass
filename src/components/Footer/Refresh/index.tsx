@@ -8,12 +8,12 @@ export default function Refresh() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        setTimeout(() => {
-            setTime(time - 1);
-            if (time == 0) navigate('/');
-        }, 1000);
-    }, [time]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTime(time - 1);
+    //         if (time == 0) navigate('/');
+    //     }, 1000);
+    // }, [time]);
 
 
     return (

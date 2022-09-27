@@ -14,7 +14,7 @@ export const FormTitle = styled.h3`
 export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
 `
 
 export const ContainerInput = styled.div`
