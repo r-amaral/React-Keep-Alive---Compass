@@ -1,4 +1,4 @@
-import { Container, Time, DataInfo } from './style'
+import { Container, Time, DataInfo } from './style';
 
 export default function CurrentDate() {
 

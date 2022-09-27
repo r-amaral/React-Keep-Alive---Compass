@@ -6,6 +6,7 @@ justify-content: flex-end;
 align-items: center;
 border-right: 1px solid #ffffff;
 width: 48.5%;
+height: 50%;
 `
 
 export const FooterText = styled.span`

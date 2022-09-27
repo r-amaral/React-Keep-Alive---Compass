@@ -3,60 +3,59 @@ import MainLogoCompass from '../../assets/images/bola-LogoCompasso.png';
 import CurrentDate from "../../components/Date";
 import Text from "../../components/TextHome";
 import Footer from '../../components/Footer';
-import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText } from './style';
+import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText, BoxLocal } from './style';
 import { useEffect, useState } from 'react';
 import PopUp from '../../components/Pop-Up';
+import Localization from '../../components/LocalizationApi';
+import Temperature from '../../components/Temperature';
+
+const textHome = [
+    {
+        title: "Our mission is",
+        translate: "Nossa missão é"
+    },
+    {
+        title: "to transform the world",
+        translate: "transformar o mundo"
+    },
+    {
+        title: "building digital experiences",
+        translate: "construindo experiências digitais"
+    },
+    {
+        title: "that enable our client’s growth",
+        translate: "que permitam o crescimento dos nossos clientes"
+    }
+]
+
 
 export default function Home() {
 
-    const [city, setCity] = useState<any>({});
     const [pop, setPop] = useState<boolean>(false);
     const [locate, setLocate] = useState<boolean>(false);
 
-    let url = locate ? "https://www.iplocate.io/api/lookup" : "https://www.iplocate.io/api/lookup/185.61.218.198";
+    const [temperature, setTemperature] = useState<any>(0);
 
-    useEffect(() => {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                setCity(data)
-                console.log(data)
-            })
-    }, [locate])
+    async function getTemperatureData(city: string) {
 
+        const apiKey = 'ba605efc18f1572f61892fe426f18a1a';
 
-    const textHome = [
-        {
-            title: "Our mission is",
-            translate: "Nossa missão é"
-        },
-        {
-            title: "to transform the world",
-            translate: "transformar o mundo"
-        },
-        {
-            title: "building digital experiences",
-            translate: "construindo experiências digitais"
-        },
-        {
-            title: "that enable our client’s growth",
-            translate: "que permitam o crescimento dos nossos clientes"
-        }
-    ]
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`);
+        const data = await res.json();
+        setTemperature(data.main.temp);
+    }
+
 
     return (
-
         <Container>
             <PopUp setLocate={setLocate} pop={pop} setPop={setPop} />
             <Header>
                 <ImgLogoCompass src={logoCompass} alt="Logo Compass" />
                 <CurrentDate />
-                <div style={{ justifySelf: "flex-end" }} className="clima">
-
-                    {city['city']}
-
-                </div>
-
+                <BoxLocal>
+                    <Localization getTemperatureData={getTemperatureData} locate={locate} />
+                    <Temperature temperature={temperature} />
+                </BoxLocal>
             </Header>
             <Section>
                 <MainLogo src={MainLogoCompass} alt="Logo Compass" />

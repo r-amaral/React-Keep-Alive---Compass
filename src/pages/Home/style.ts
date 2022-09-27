@@ -35,10 +35,15 @@ max-height: 750px;
 `
 
 export const BoxText = styled.div`
-/* display: flex;
-flex-direction: column;*/ 
 margin-top: 169px;
 margin-bottom: 169px;
  margin-right: 134px; 
  box-sizing: border-box;
+`
+
+export const BoxLocal = styled.div`
+justify-self: flex-end;
+display: flex;
+flex-direction: column;
+align-items: center;
 `
