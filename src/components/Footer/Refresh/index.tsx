@@ -5,16 +5,14 @@ import { Container, Text, Box, Time, Seconds } from './style'
 export default function Refresh() {
 
     const [time, setTime] = useState<number>(60);
-
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setTime(time - 1);
-    //         if (time == 0) navigate('/');
-    //     }, 1000);
-    // }, [time]);
-
+    useEffect(() => {
+        setTimeout(() => {
+            setTime(time - 1);
+            if (time == 0) navigate('/');
+        }, 1000);
+    }, [time]);
 
     return (
         <Container>

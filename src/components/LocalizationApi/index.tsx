@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 
 export default function Localization({ locate, getTemperatureData }: any) {
 
-    const [city, setCity] = useState<any>();
-    const [subdivision, setSubdivision] = useState<any>();
+    const [city, setCity] = useState<string>();
+    const [subdivision, setSubdivision] = useState<string>();
 
     let urlCity = locate ? "https://www.iplocate.io/api/lookup" : "https://www.iplocate.io/api/lookup/185.61.218.198";
     useEffect(() => {

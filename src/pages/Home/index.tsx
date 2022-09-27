@@ -14,7 +14,7 @@ export default function Home() {
     const [pop, setPop] = useState<boolean>(false);
     const [locate, setLocate] = useState<boolean>(false);
 
-    const [temperature, setTemperature] = useState<any>(0);
+    const [temperature, setTemperature] = useState<number>(0);
 
     async function getTemperatureData(city: string) {
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { secondaryColor } from '../UI/variables';
+import IconCompassUol from '../../assets/images/LogoCompassHome.png';
 
 export const Container = styled.div<{ pop: boolean }>`
 position: absolute;
@@ -11,6 +12,7 @@ width: 100%;
 box-sizing: border-box;
 font-size: 20px;
 padding: 20px;
+z-index: 2;
 background:rgba(0, 0, 0, 0.5);
 `
 
@@ -31,9 +33,19 @@ padding: 20px;
 box-sizing: border-box;
 `
 
+export const IconCompass = styled.i`
+background-image: url(${IconCompassUol});
+width: 150px;
+height: 40px;
+position: absolute;
+left: 0;
+top: 0;
+z-index: 5;
+`
+
 export const TextPop = styled.span`
 text-align: center;
-margin-top: 30px;
+margin-top: 40px;
 `
 
 export const Box = styled.div`

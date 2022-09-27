@@ -1,10 +1,11 @@
 import { IPop } from '../../interface/Ipop';
-import { TextPop, Box, Button, Pop, Container } from './style';
+import { TextPop, Box, Button, Pop, Container, IconCompass } from './style';
 
 export default function PopUp({ pop, setPop, setLocate }: IPop) {
     return (
         <Container pop={pop}>
             <Pop>
+                <IconCompass />
                 <TextPop>Compass.uol deseja receber sua localização</TextPop>
                 <Box>
                     <Button onClick={() => {
