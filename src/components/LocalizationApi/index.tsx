@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from "react";
-import styled from 'styled-components';
-
-const Local = styled.span`
-justify-self: flex-end;
-`
+import { useState, useEffect } from "react";
 
 export default function Localization({ locate, getTemperatureData }: any) {
 
@@ -22,6 +17,6 @@ export default function Localization({ locate, getTemperatureData }: any) {
     }, [locate])
 
     return (
-        <Local>{city} - {subdivision}</Local>
+        <span>{city} - {subdivision}</span>
     )
 }

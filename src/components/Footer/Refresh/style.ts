@@ -1,11 +1,17 @@
 import styled from 'styled-components';
+import { secondaryColor } from '../../UI/variables';
 
 export const Container = styled.div`
 display: flex;
 align-items: center;
-color: #FFFFFF;
+color: ${secondaryColor};
 margin-left:12%;
 box-sizing: border-box;
+
+@media screen and (max-width:1025px) {
+   margin-left: 0;
+   margin-right: 30px;
+  }
 `
 
 export const Text = styled.span`

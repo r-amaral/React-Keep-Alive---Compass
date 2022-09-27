@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { secondaryColor } from '../../components/UI/variables';
 
 export const Container = styled.div`
-background: linear-gradient(105.96deg, #FFFFFF 0%, #F0F0F0 97.86%);
+background: linear-gradient(105.96deg, secondaryColor 0%, #F0F0F0 97.86%);
 height: 100vh;
 display: flex;
 flex-direction: column;
@@ -28,17 +29,20 @@ height: 74.4vh;
 
 export const MainLogo = styled.img`
 align-self: flex-end;
-width: 30vw;
+width: 42vw;
 background-size: cover;
 max-width: 600px;
 max-height: 750px;
 `
 
 export const BoxText = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
 margin-top: 169px;
 margin-bottom: 169px;
- margin-right: 134px; 
- box-sizing: border-box;
+margin-right: 134px; 
+box-sizing: border-box;
 `
 
 export const BoxLocal = styled.div`

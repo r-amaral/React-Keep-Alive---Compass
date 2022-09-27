@@ -9,26 +9,6 @@ import PopUp from '../../components/Pop-Up';
 import Localization from '../../components/LocalizationApi';
 import Temperature from '../../components/Temperature';
 
-const textHome = [
-    {
-        title: "Our mission is",
-        translate: "Nossa missão é"
-    },
-    {
-        title: "to transform the world",
-        translate: "transformar o mundo"
-    },
-    {
-        title: "building digital experiences",
-        translate: "construindo experiências digitais"
-    },
-    {
-        title: "that enable our client’s growth",
-        translate: "que permitam o crescimento dos nossos clientes"
-    }
-]
-
-
 export default function Home() {
 
     const [pop, setPop] = useState<boolean>(false);
@@ -44,6 +24,25 @@ export default function Home() {
         const data = await res.json();
         setTemperature(data.main.temp);
     }
+
+    const textHome = [
+        {
+            title: "Our mission is",
+            translate: "Nossa missão é"
+        },
+        {
+            title: "to transform the world",
+            translate: "transformar o mundo"
+        },
+        {
+            title: "building digital experiences",
+            translate: "construindo experiências digitais"
+        },
+        {
+            title: "that enable our client’s growth",
+            translate: "que permitam o crescimento dos nossos clientes"
+        }
+    ]
 
 
     return (

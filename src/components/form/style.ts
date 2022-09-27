@@ -1,5 +1,5 @@
 import styled, { StyledComponent } from 'styled-components';
-import { primaryColor } from '../UI/variables';
+import { invalidColor, primaryColor } from '../UI/variables';
 import UserIcon from '../../assets/icons/icon-user.svg'
 import PasswordIcon from '../../assets/icons/icon-password.svg'
 import { IIcon } from '../../interface/IIcon';
@@ -38,7 +38,7 @@ export const Icon = styled.i<IIcon>`
 export const InvalidText = styled.span`
     align-self:center;
     margin-top: 28px;
-    color: #E9B425;
+    color: ${invalidColor};
     text-align: center;
     font-weight:700;
     width: 70%;

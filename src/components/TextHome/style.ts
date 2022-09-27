@@ -10,6 +10,11 @@ font-size: ${({ size }) => size}px;
 text-align: right;
 color: #C12D18;
 margin: 0;
+
+
+@media screen and (max-width:1025px) {
+    font-size: ${({ size }) => (size / 1.2)}px;
+  }
 `
 export const Translate = styled.span`
 font-weight: 400;

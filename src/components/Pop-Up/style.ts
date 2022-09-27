@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { secondaryColor } from '../UI/variables';
 
 export const Container = styled.div<{ pop: boolean }>`
 position: absolute;
@@ -43,7 +44,7 @@ gap: 10px;
 export const Button = styled.button<{ acept: boolean }>`
 border: none;
 cursor: pointer;
-color: #FFFFFF;
+color: ${secondaryColor};
 background: ${({ acept }) => acept ? "#E9B425" : 'black'};
 border-radius: 5px;
 padding: 5px;
