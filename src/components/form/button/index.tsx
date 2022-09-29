@@ -7,7 +7,7 @@ const Button = styled.button`
     box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
     border-radius: 50px;
     color: ${secondaryColor};
-    margin-top:115px;
+    margin-top:11vh;
     height: 67px;
     border: none;
     outline: none;

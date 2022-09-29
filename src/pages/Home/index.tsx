@@ -4,26 +4,11 @@ import CurrentDate from "../../components/Date";
 import Text from "../../components/TextHome";
 import Footer from '../../components/Footer';
 import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText, BoxLocal } from './style';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PopUp from '../../components/Pop-Up';
 import Localization from '../../components/LocalizationApi';
-import Temperature from '../../components/Temperature';
 
 export default function Home() {
-
-    const [pop, setPop] = useState<boolean>(false);
-    const [locate, setLocate] = useState<boolean>(false);
-
-    const [temperature, setTemperature] = useState<number>(0);
-
-    async function getTemperatureData(city: string) {
-
-        const apiKey = 'ba605efc18f1572f61892fe426f18a1a';
-
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`);
-        const data = await res.json();
-        setTemperature(data.main.temp);
-    }
 
     const textHome = [
         {
@@ -44,16 +29,13 @@ export default function Home() {
         }
     ]
 
-
     return (
         <Container>
-            <PopUp setLocate={setLocate} pop={pop} setPop={setPop} />
             <Header>
                 <ImgLogoCompass src={logoCompass} alt="Logo Compass" />
                 <CurrentDate />
                 <BoxLocal>
-                    <Localization getTemperatureData={getTemperatureData} locate={locate} />
-                    <Temperature temperature={temperature} />
+                    <Localization />
                 </BoxLocal>
             </Header>
             <Section>

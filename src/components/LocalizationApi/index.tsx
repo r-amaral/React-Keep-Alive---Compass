@@ -1,22 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
+import { TempCont, IconCloud, BoxTemp } from './style'
 
-export default function Localization({ locate, getTemperatureData }: any) {
+export default function Localization() {
 
     const [city, setCity] = useState<string>();
-    const [subdivision, setSubdivision] = useState<string>();
+    const [country, setCountry] = useState<string>();
+    const [temperature, setTemperature] = useState<number>(0);
 
-    let urlCity = locate ? "https://www.iplocate.io/api/lookup" : "https://www.iplocate.io/api/lookup/185.61.218.198";
-    useEffect(() => {
-        fetch(urlCity)
-            .then(response => response.json())
-            .then(data => {
-                setCity(data.city)
-                setSubdivision(data.subdivision)
-                getTemperatureData(data.city)
+    useLayoutEffect(() => {
+        getPosition()
+            .then((position: any) => getData(position.coords.latitude, position.coords.longitude))
+            .catch((error) => {
+                getData(-15.7801, -47.9292)
             })
-    }, [locate])
+    }, [])
+
+    const getPosition = () => {
+        return new Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+    };
+
+    const getData = async (lat: number = -15.7801, lon: number = -47.9292) => {
+        const apiKey = 'ba605efc18f1572f61892fe426f18a1a';
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKey}`)
+            .then(res => res.json())
+            .then(data => {
+                setCity(data.name)
+                setCountry(data.sys.country)
+                setTemperature(data.main.temp)
+            })
+    }
 
     return (
-        <span>{city} - {subdivision}</span>
+        <>
+            <span>{city} - {country}</span>
+
+            <BoxTemp>
+                <IconCloud />
+                <TempCont>{Math.round(temperature)}º</TempCont>
+            </BoxTemp>
+        </>
     )
 }
