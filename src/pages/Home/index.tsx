@@ -1,5 +1,5 @@
 import logoCompass from '../../assets/images/LogoCompassHome.png';
-import MainLogoCompass from '../../assets/images/bola-LogoCompasso.png';
+import MainLogoCompass from '../../assets/images/bolaLogoCompass.png';
 import CurrentDate from "../../components/Date";
 import Text from "../../components/TextHome";
 import Footer from '../../components/Footer';

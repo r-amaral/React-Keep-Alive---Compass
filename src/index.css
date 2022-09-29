@@ -1,8 +1,4 @@
-@font-face {
-    font-family: 'Mark Pro';
-    src: local('Mark Pro'), url(./fonts/Mark-Pro.ttf) format('truetype');
-}
-
-body {
-    font-family: 'Mark Pro';
-}
+ @font-face {
+     font-family: 'Mark Pro';
+     src: local('Mark Pro'), url(./fonts/Mark-Pro.ttf) format('truetype');
+ }

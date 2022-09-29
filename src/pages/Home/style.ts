@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
 background: linear-gradient(105.96deg, #FFFFFF 0%, #F0F0F0 97.86%);
 height: 100vh;
@@ -24,17 +23,17 @@ export const Section = styled.section`
 display: flex;
 justify-content: space-between;
 align-items: center;
-height: 72.4vh;
+height: 74.4vh;
 `
 
 export const MainLogo = styled.img`
 align-self: flex-end;
 width: 45vw;
-max-height: 100%;
+max-height: 750px;
 background-size: cover;
 box-sizing: border-box;
 max-width: 600px;
-/* max-height: 750px; */
+margin-bottom: -8vh;
 /* margin-top: 169px; */
 `
 

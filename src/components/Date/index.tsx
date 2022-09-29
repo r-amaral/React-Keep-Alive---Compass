@@ -1,6 +1,13 @@
+import { useEffect, useState } from 'react';
 import { Container, Time, DataInfo } from './style';
 
 export default function CurrentDate() {
+
+    const [dateAtt, setDateAtt] = useState(new Date());
+
+    useEffect(() => {
+        setInterval(() => setDateAtt(new Date()), 1000);
+    }, []);
 
     const date = new Date();
     const currentHour = date.getHours();
