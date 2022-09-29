@@ -1,4 +1,3 @@
-import { IText } from '../../interface/IText';
 import { BoxText, Title, Translate, FirstTitle } from './style'
 
 export default function Text() {
