@@ -4,18 +4,22 @@ export const BoxText = styled.div`
 display: flex;
 flex-direction: column;
 `
-export const Title = styled.p<{ size: number }>`
+export const Title = styled.p`
 font-weight: 700;
-font-size: ${({ size }) => size}px;
+font-size: 64px;
 text-align: right;
 color: #C12D18;
 margin: 0;
 
-
 @media screen and (max-width:1025px) {
-    font-size: ${({ size }) => (size / 1.2)}px;
+    font-size: 30px;
   }
 `
+
+export const FirstTitle = styled(Title)`
+font-size:36px;
+`
+
 export const Translate = styled.span`
 font-weight: 400;
 font-size: 24px;

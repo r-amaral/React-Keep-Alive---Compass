@@ -1,5 +1,5 @@
-import { useState, useLayoutEffect } from "react";
-import { TempCont, IconCloud, BoxTemp } from './style'
+import React, { useState, useLayoutEffect } from "react";
+import { TempCont, IconCloud, BoxTemp, Local } from './style'
 
 export default function Localization() {
 
@@ -34,13 +34,12 @@ export default function Localization() {
     }
 
     return (
-        <>
-            <span>{city} - {country}</span>
-
+        <React.Fragment>
+            <Local>{city} - {country}</Local>
             <BoxTemp>
                 <IconCloud />
                 <TempCont>{Math.round(temperature)}º</TempCont>
             </BoxTemp>
-        </>
+        </React.Fragment>
     )
 }
