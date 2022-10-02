@@ -10,6 +10,10 @@ export const TempCont = styled.span`
 font-weight: 700;
 font-size: 48px;
 color: #222222;
+
+@media screen and (max-width:280px){
+font-size: 30px;
+}
 `
 
 export const IconCloud = styled.i`
@@ -17,6 +21,10 @@ background: url(${Icon});
 width: 35px;
 height: 35px;
 background-repeat: no-repeat;
+
+@media screen and (max-width:280px){
+background-size: 90% 90%;
+}
 `
 export const BoxTemp = styled.div`
 display: flex;

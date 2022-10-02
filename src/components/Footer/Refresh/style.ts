@@ -12,6 +12,11 @@ box-sizing: border-box;
    margin-left: 0;
    margin-right: 30px;
   }
+
+@media screen and (max-width:768px) {
+  justify-content: center;
+  margin-top: 20px;
+} 
 `
 
 export const Text = styled.span`
@@ -32,9 +37,12 @@ font-size: 2.55vw;
 align-self: center;
 font-weight: 700;
 line-height: 44px;
+
+@media screen and (max-width:1024px) {
+    font-size: 30px;
+} 
 `
 
 export const Seconds = styled.span`
-font-size: 14px;
-/* line-height: 10px; */
+font-size: 14px;  
 `

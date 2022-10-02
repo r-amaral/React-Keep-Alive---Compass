@@ -7,9 +7,9 @@ export default function ButtonsFooter() {
 
     return (
         <Container>
-            <ContinueButton onClick={() => window.open('https://google.com', '_blank')}>Continuar Navegando</ContinueButton>
+            <ContinueButton onClick={() => window.open('https://google.com', '_blank')}><span>Continuar</span> <span>Navegando</span></ContinueButton>
             <LogoutButton onClick={() => navigate('/')} >Logout</LogoutButton>
-        </Container>
+        </Container >
     )
 }
 

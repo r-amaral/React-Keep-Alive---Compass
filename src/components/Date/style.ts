@@ -5,6 +5,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+
+@media screen and (max-width:740px){
+    display: none;
+}
 `
 
 export const Time = styled.div`
