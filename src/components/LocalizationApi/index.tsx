@@ -1,13 +1,13 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { TempCont, IconCloud, BoxTemp, Local } from './style'
 
 export default function Localization() {
 
-    const [city, setCity] = useState<string>();
-    const [country, setCountry] = useState<string>();
-    const [temperature, setTemperature] = useState<number>(0);
+    const [city, setCity] = useState<string>("Brasília");
+    const [country, setCountry] = useState<string>("BR");
+    const [temperature, setTemperature] = useState<number>(20);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         getPosition()
             .then((position: any) => getData(position.coords.latitude, position.coords.longitude))
             .catch((error) => {
@@ -23,7 +23,7 @@ export default function Localization() {
 
     const getData = async (lat: number = -15.7801, lon: number = -47.9292) => {
         const apiKey = 'ba605efc18f1572f61892fe426f18a1a';
-
+        console.log('teste')
         fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKey}`)
             .then(res => res.json())
             .then(data => {
