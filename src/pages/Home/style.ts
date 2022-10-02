@@ -28,13 +28,10 @@ height: 74.4vh;
 
 export const MainLogo = styled.img`
 align-self: flex-end;
-width: 45vw;
-max-height: 750px;
-background-size: cover;
+max-height:83.3vh;
 box-sizing: border-box;
-max-width: 600px;
+max-width: 31.25vw;
 margin-bottom: -8vh;
-/* margin-top: 169px; */
 `
 
 export const BoxText = styled.div`
@@ -43,7 +40,7 @@ flex-direction: column;
 justify-content: center;
 margin-top: 169px;
 margin-bottom: 210px;
-margin-right: 134px; //7%
+margin-right: 7%; 
 box-sizing: border-box;
 `
 
