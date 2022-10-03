@@ -34,5 +34,5 @@ width: 60%;
     text-align: center;
     margin:0 0 25px 0;
     width: 100%;
-  }
+}
 `

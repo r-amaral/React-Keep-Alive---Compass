@@ -4,19 +4,15 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   display: flex;
+  min-height: 100vh;
   height: 100vh;
   width: 100%;
 
-@media screen and (max-width:768px) {
-    height: 100vh;
-    width: 100vw;
-}
-
-@media screen and (max-width:280px){
+@media screen and (max-height:420px){
     height: 100%;
 }
 
-@media screen and (max-height:420px){
+@media screen and (max-width:280px){
     height: 100%;
 }
 
@@ -31,35 +27,31 @@ export const Content = styled.div`
   width: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   box-sizing: border-box;
-  padding-left: 15.2%;
-  padding-right: 15.2%;
+  padding: 10px 15.2%;
 
 @media screen and (max-width:1024px) {
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 10px 10%;
 }
 
 @media screen and (max-width:768px) {
   width: 100%;
-  padding-left: 15%;
-  padding-right: 15%;
+  justify-content: flex-start;
+  padding: 10px 15%;
 }
 
 @media screen and (max-width:425px) {
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 10px 10%;
 }
 `
 
 export const Header = styled.div`
-  padding-top: 18vh;
   padding-bottom: 13vh;
   width: 100%;
 
 @media screen and (width:1024px) and (height:600px){
-  padding-top: 5vh;
   padding-bottom:3vh;
   margin-bottom:4.14vh;
 }

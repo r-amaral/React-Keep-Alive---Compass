@@ -22,7 +22,6 @@ export const FormLogin = styled.form`
 @media screen and (max-width:280px){
     padding-bottom: 17vh;
 }
-    
 `
 
 export const ContainerInput = styled.div`

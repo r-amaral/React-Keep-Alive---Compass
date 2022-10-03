@@ -6,7 +6,7 @@ flex-direction: column;
 `
 export const Title = styled.p`
 font-weight: 700;
-font-size: 3.33vw; //64px
+font-size: 3.33vw;
 text-align: right;
 color: #C12D18;
 margin: 0;
@@ -26,7 +26,7 @@ margin: 0;
 `
 
 export const FirstTitle = styled(Title)`
-font-size:1.88vw; //36px
+font-size:1.88vw; 
 
 @media screen and (max-width:1440px) {
     font-size: 35px;
@@ -44,7 +44,7 @@ font-size:1.88vw; //36px
 
 export const Translate = styled.span`
 font-weight: 400;
-font-size: 1.25vw;//24px
+font-size: 1.25vw;
 text-align: right;
 color: #222222;
 line-height: 20px;
