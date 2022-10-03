@@ -4,6 +4,10 @@ import Icon from '../../assets/icons/nuvem.svg';
 export const Local = styled.span`
 font-weight: 400;
 font-size: 14px;
+
+@media screen and (max-width:280px){
+font-size: 12px;
+}
 `
 
 export const TempCont = styled.span`

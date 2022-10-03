@@ -17,6 +17,13 @@ const Input = styled.input<IInput>`
     ::placeholder{
     color:${primaryColor}
     }
+
+    @media screen and (max-width:768px){
+        width: calc(100% - 43px);
+    }
+    @media screen and (max-width:425px){
+       font-size: 14px;
+    }
 `
 
 export default Input;

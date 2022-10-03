@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { invalidColor, primaryColor } from '../UI/variables';
 import UserIcon from '../../assets/icons/icon-user.svg'
 import PasswordIcon from '../../assets/icons/icon-password.svg'
@@ -9,12 +9,20 @@ export const FormTitle = styled.h3`
     font-size: 30px;
     color: ${primaryColor};
     margin: 0;
+
+@media screen and (max-width:425px){
+    font-size: 26px;
+}
 `
 
 export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
+@media screen and (max-width:280px){
+    padding-bottom: 17vh;
+}
+    
 `
 
 export const ContainerInput = styled.div`

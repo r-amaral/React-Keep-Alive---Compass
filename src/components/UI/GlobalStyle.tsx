@@ -9,6 +9,10 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
     }
 
+    html{
+      min-height: 100%;
+    }
+
     body {
       font-family: 'Mark Pro', sans-serif;
       margin: 0;
