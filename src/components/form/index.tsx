@@ -24,6 +24,7 @@ export default function Form() {
         } else setLogged(true)
     }
 
+
     return (
         <FormLogin onSubmit={validationInput}>
             <FormTitle>Login</FormTitle>

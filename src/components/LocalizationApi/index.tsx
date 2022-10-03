@@ -3,8 +3,8 @@ import { TempCont, IconCloud, BoxTemp, Local } from './style'
 
 export default function Localization() {
 
-    const [city, setCity] = useState<string>("");
-    const [country, setCountry] = useState<string>("");
+    const [city, setCity] = useState<string>("Brasilia");
+    const [country, setCountry] = useState<string>("BR");
     const [temperature, setTemperature] = useState<number>(0);
 
     // useEffect(() => {
@@ -24,10 +24,7 @@ export default function Localization() {
 
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            position => getData(position.coords.latitude, position.coords.longitude),
-            () => getData(-15.7801, -47.9292)
-        )
+        navigator.geolocation.getCurrentPosition(position => getData(position.coords.latitude, position.coords.longitude), () => getData(-15.7801, -47.9292))
     }, [])
 
 

@@ -5,45 +5,32 @@ import styled from 'styled-components';
 export const Section = styled.section`
   display: flex;
   min-height: 100vh;
-  height: 100vh;
+  height: 100%;
   width: 100%;
-
-@media screen and (max-height:420px){
-    height: 100%;
-}
-
-@media screen and (max-width:280px){
-    height: 100%;
-}
-
-@media screen and (height:540px) and (width:720px){
-    height: 100%;
-}
 `
 
 export const Content = styled.div`
   background: linear-gradient(180deg, #33383D 0%, #1C1D20 100%);
-  height: 100%;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 10px 15.2%;
+  padding: 20px 15.1% 50px 15.1%;
 
 @media screen and (max-width:1024px) {
-  padding: 10px 10%;
+  padding: 20px 10% 50px 10%;
 }
 
 @media screen and (max-width:768px) {
   width: 100%;
   justify-content: flex-start;
-  padding: 10px 15%;
+  padding: 20px 15.1% 50px 15.1%;
 }
 
 @media screen and (max-width:425px) {
-  padding: 10px 10%;
+  padding: 10px 10% 50px 10%;
 }
 `
 
@@ -87,7 +74,6 @@ export const Paragraph = styled.p`
 
 export const Banner = styled.div`
   background-image: url(${banner});
-  height: 100vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

@@ -10,12 +10,13 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html{
-      min-height: 100%;
+      /* min-height: 100%; */
     }
 
     body {
       font-family: 'Mark Pro', sans-serif;
       margin: 0;
+      min-height: 100%;
     }
 `;
 
