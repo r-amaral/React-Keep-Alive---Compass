@@ -20,8 +20,12 @@ margin: 0;
 @media screen and (max-width:768px) {
     font-size: 33px;
 } 
-@media screen and (max-width:425px) {
+@media screen and (max-width:425px){
     font-size: 25px;
+}
+
+@media screen and (max-height:600px){
+    font-size: 20px;
 }
 `
 
@@ -37,8 +41,12 @@ font-size:1.88vw;
 @media screen and (max-width:768px) {
     font-size: 25px;
 } 
-@media screen and (max-width:425px) {
+@media screen and (max-width:425px){
     font-size: 20px;
+}
+
+@media screen and (max-height:600px){
+    font-size: 18px;
 }
 `
 
@@ -49,6 +57,10 @@ text-align: right;
 color: #222222;
 line-height: 20px;
 
+@media screen and (max-height:600px){
+    font-size: 14px;
+}
+
 @media screen and (max-width:1440px) {
     font-size: 25px;
 } 
@@ -57,7 +69,7 @@ line-height: 20px;
     font-size: 20px;
 } 
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:425px){
     font-size: 14px;
 }
 `

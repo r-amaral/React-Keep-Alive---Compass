@@ -37,6 +37,7 @@ font-size: 2.55vw;
 align-self: center;
 font-weight: 700;
 line-height: 44px;
+height: 38px;
 
 @media screen and (max-width:1024px) {
     font-size: 30px;

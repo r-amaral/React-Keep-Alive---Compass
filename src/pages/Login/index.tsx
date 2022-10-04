@@ -3,7 +3,7 @@ import compassLogo from '../../assets/images/Logo-Compass.png';
 import compassLogoMobile from '../../assets/images/Logo-Compass.png';
 import { Content, H1, Paragraph, Banner, Section, CompassLogo, CompassLogoMobile, Header } from './style';
 
-function Login() {
+export default function Login() {
   return (
     <Section>
       <Content>
@@ -21,5 +21,3 @@ function Login() {
     </Section>
   );
 }
-
-export default Login;

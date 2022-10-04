@@ -7,24 +7,8 @@ export default function Localization() {
     const [country, setCountry] = useState<string>("BR");
     const [temperature, setTemperature] = useState<number>(0);
 
-    // useEffect(() => {
-    //     getPosition()
-    //         .then((position: any) => getData(position.coords.latitude, position.coords.longitude))
-    //         .catch((error) => {
-    //             getData(-15.7801, -47.9292)
-    //         })
-    // }, [])
-
-    // const getPosition = () => {
-    //     return new Promise(function (resolve, reject) {
-    //         navigator.geolocation.getCurrentPosition(resolve, reject);
-    //     });
-    // };
-
-
-
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(position => getData(position.coords.latitude, position.coords.longitude), () => getData(-15.7801, -47.9292))
+        navigator.geolocation.getCurrentPosition(position => getData(position.coords.latitude, position.coords.longitude), () => getData())
     }, [])
 
 

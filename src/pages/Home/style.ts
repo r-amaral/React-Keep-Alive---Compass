@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: linear-gradient(105.96deg, #FFFFFF 0%, #F0F0F0 97.86%);
-  height: 100vh;
+  /* height: 100vh; */
+  min-height: 100vh;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
 
 @media screen and (max-width:768px){
@@ -32,6 +34,11 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 18px 5% 0 5%;
 }
+
+@media screen and (max-height:500px){
+  justify-content: space-between;
+  height: 35.6vh;
+}
 `
 
 export const Section = styled.section`
@@ -45,6 +52,17 @@ export const Section = styled.section`
   padding-right: 5%;
   position: relative;
   height: 61.55vh;
+}
+
+@media screen and (max-width:425px){
+  height: 52vh;
+}
+
+@media screen and (max-width:375px){
+  height: 60vh;
+}
+@media screen and (max-height:300px){
+  margin-top: 40px;
 }
 `
 
@@ -63,13 +81,17 @@ export const MainLogo = styled.img`
 @media screen and (max-width:425px){
   position: absolute;
 }
+
+@media screen and (max-height:500px){
+  height: 50vh;
+}
 `
 
 export const BoxText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 169px 7% 210px 0%;
+  margin: 50px 7% 50px 0%;
   box-sizing: border-box;
 
 @media screen and (max-width:768px){
@@ -84,6 +106,10 @@ export const BoxText = styled.div`
 @media screen and (max-width:280px){
   margin-top: 110px;
 }
+
+@media screen and (max-height: 500px){
+  margin-bottom: 50px;
+}
 `
 
 export const BoxLocal = styled.div`
@@ -91,4 +117,8 @@ export const BoxLocal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-height: 500px){
+    grid-column: 3;
+}
 `

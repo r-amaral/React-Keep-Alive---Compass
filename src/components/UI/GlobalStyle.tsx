@@ -8,11 +8,7 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       text-decoration: none;
     }
-
-    html{
-      /* min-height: 100%; */
-    }
-
+    
     body {
       font-family: 'Mark Pro', sans-serif;
       margin: 0;

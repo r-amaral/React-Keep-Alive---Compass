@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { secondaryColor } from '../../UI/variables'
 
 export const Container = styled.div`
-height: 100%;
 display: flex;
+min-height: 100%;
 
 @media screen and (max-width:830px) {
  margin-top: 25px;
@@ -11,7 +11,7 @@ display: flex;
 `
 
 export const ContinueButton = styled.button`
-height: 100%;
+min-height: 100%;
 color: #C13216;
 background: ${secondaryColor};
 outline: none;
@@ -36,7 +36,7 @@ align-self: flex-start;
 `
 
 export const LogoutButton = styled.button`
-height: 100%;
+min-height: 100%;
 color: ${secondaryColor}; 
 background: transparent;
 outline: none;
