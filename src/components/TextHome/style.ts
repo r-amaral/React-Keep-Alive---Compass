@@ -57,10 +57,6 @@ text-align: right;
 color: #222222;
 line-height: 20px;
 
-@media screen and (max-height:600px){
-    font-size: 14px;
-}
-
 @media screen and (max-width:1440px) {
     font-size: 25px;
 } 
@@ -70,6 +66,10 @@ line-height: 20px;
 } 
 
 @media screen and (max-width:425px){
+    font-size: 14px;
+}
+
+@media screen and (max-height:600px){
     font-size: 14px;
 }
 `
