@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: linear-gradient(105.96deg, #FFFFFF 0%, #F0F0F0 97.86%);
-  /* height: 100vh; */
   min-height: 100vh;
   display: flex;
   justify-content: space-between;

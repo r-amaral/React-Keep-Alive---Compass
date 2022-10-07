@@ -4,7 +4,7 @@ import CurrentDate from "../../components/Date";
 import Text from "../../components/TextHome";
 import Footer from '../../components/Footer';
 import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText, BoxLocal } from './style';
-import Localization from '../../components/LocalizationApi';
+import Localization from '../../components/Localization';
 
 export default function Home() {
 

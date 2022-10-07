@@ -3,7 +3,7 @@ import { TempCont, IconCloud, BoxTemp, Local } from './style'
 
 export default function Localization() {
 
-    const [city, setCity] = useState<string>("Brasilia");
+    const [city, setCity] = useState<string>("Brasília");
     const [country, setCountry] = useState<string>("BR");
     const [temperature, setTemperature] = useState<number>(0);
 
@@ -11,9 +11,7 @@ export default function Localization() {
         navigator.geolocation.getCurrentPosition(position => getData(position.coords.latitude, position.coords.longitude), () => getData())
     }, [])
 
-
-    const getData = async (lat: number = -15.7801, lon: number = -47.9292) => {
-        console.log('teste')
+    const getData = (lat: number = -15.7801, lon: number = -47.9292) => {
         const apiKey = 'ba605efc18f1572f61892fe426f18a1a';
         fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKey}`)
             .then(res => res.json())

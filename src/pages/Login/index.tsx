@@ -1,4 +1,4 @@
-import Form from '../../components/Form';
+import Form from '../../components/FormLogin';
 import compassLogo from '../../assets/images/Logo-Compass.png';
 import compassLogoMobile from '../../assets/images/Logo-Compass.png';
 import { Content, H1, Paragraph, Banner, Section, CompassLogo, CompassLogoMobile, Header } from './style';

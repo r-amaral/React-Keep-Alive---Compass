@@ -1,4 +1,4 @@
 export interface IInput {
-    invalidLogin: boolean | any;
+    invalidLogin?: boolean | any;
     type: string;
 }

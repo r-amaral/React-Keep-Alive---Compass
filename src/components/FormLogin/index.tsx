@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
-import Button from './Button';
-import Input from './Input';
-import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText } from './style';
+import Button from '../Button';
+import Input from '../Input';
+import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
 
 export default function Form() {
@@ -23,7 +23,6 @@ export default function Form() {
             navigate('/home')
         } else setLogged(true)
     }
-
 
     return (
         <FormLogin onSubmit={validationInput}>
@@ -47,9 +46,11 @@ export default function Form() {
                 <Icon Icon={password} user={false} />
             </ContainerInput>
 
-            {logged ? <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText> : ''}
+            {logged && <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText>}
 
-            <Button>Continuar</Button>
+            <Button logged={logged}>Continuar</Button>
+
+            <FormLink>Caso você não possua um cadastro, <FormRedirection onClick={() => navigate('/registration')}>clique aqui</FormRedirection></FormLink>
         </FormLogin >
     )
 }

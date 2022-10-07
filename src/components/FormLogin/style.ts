@@ -50,3 +50,16 @@ export const InvalidText = styled.span`
     font-weight:700;
     width: 70%;
 `
+
+export const FormLink = styled.span`
+margin-top: 20px;
+font-size: 16px;
+text-align: center;
+color: ${primaryColor};
+`
+
+export const FormRedirection = styled.a`
+color: #FF2D04;
+font-weight:700;
+cursor:pointer;
+`
