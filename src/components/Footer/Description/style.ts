@@ -10,13 +10,13 @@ width: 48.5%;
 height: 50%;
 
 @media screen and (max-width:830px) {
-    flex-direction: column;
-    height:initial;
-    border-right: none;
-    border-bottom: 1px solid ${secondaryColor};
-    margin-top: 25px;
-    width: 100%;
-  }
+flex-direction: column;
+height:initial;
+border-right: none;
+border-bottom: 1px solid ${secondaryColor};
+margin-top: 25px;
+width: 100%;
+}
 `
 
 export const FooterText = styled.span`
@@ -28,15 +28,21 @@ font-weight: 400;
 text-align: right;
 width: 60%;
 
+@media screen and (max-width:1050px) {
+margin-left:0;
+width: 100%;
+margin-right:10px;
+}
+
 @media screen and (max-width:830px) {
-    flex-direction: column;
-    height:initial;
-    text-align: center;
-    margin:0 0 25px 0;
-    width: 100%;
+flex-direction: column;
+height:initial;
+text-align: center;
+margin:0 0 25px 0;
+width: 100%;
 }
 @media screen and (max-height:500px) {
-  margin-left:0%;
-  width: 100%;
+margin-left:0%;
+width: 100%;
 }
 `

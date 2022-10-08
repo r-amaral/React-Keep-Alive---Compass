@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, getDocs } from "firebase/firestore";
-import { useEffect } from "react";
+import { collection, getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyCbHlefkaixi_NRQWwv_sf6XR_jxLeUcsk",
@@ -12,12 +11,4 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 export const useCollectionRef = collection(db, 'users')
-
-// useEffect(() => {
-//     const getUsers = async () => {
-//         const data = await getDocs(useCollectionRef);
-//         // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-//     }
-//     getUsers()
-// }, [])
 

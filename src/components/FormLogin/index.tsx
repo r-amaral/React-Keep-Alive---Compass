@@ -1,13 +1,16 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import Button from '../Button';
 import Input from '../Input';
 import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
-// import { getDocs } from "firebase/firestore";
-// import { useCollectionRef } from '../../firebaseConfig';
+import { getDocs } from "firebase/firestore";
+import { useCollectionRef } from '../../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "../../common/context/RegistrationData";
 
 export default function Form() {
+
+    const { setName }: any = useContext(UserContext)
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -19,12 +22,17 @@ export default function Form() {
 
         event.preventDefault();
 
-        // const data = await getDocs(useCollectionRef);
-        // const users = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }))
+        const data = await getDocs(useCollectionRef);
+        const users = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }))
+        const user = users.find(element => element.email === email)
 
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => navigate('/home'))
+            .then(() => {
+                setName(user.name)
+                navigate('/home')
+            }
+            )
             .catch((error) => setErrorLogged(true));
     }
 
@@ -33,7 +41,7 @@ export default function Form() {
             <FormTitle>Login</FormTitle>
             <ContainerInput>
                 <Input
-                    onChange={(event: any) => setEmail(event.target.value)}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
                     type='text'
                     placeholder='Usuário'
                     invalidLogin={loggedError}
@@ -42,7 +50,7 @@ export default function Form() {
             </ContainerInput>
             <ContainerInput>
                 <Input
-                    onChange={(event: any) => setPassword(event.target.value)}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
                     type='password'
                     placeholder='Senha'
                     invalidLogin={loggedError}

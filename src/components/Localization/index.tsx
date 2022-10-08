@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect } from "react";
 import { TempCont, IconCloud, BoxTemp, Local } from './style'
 
 export default function Localization() {

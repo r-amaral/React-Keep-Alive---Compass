@@ -7,7 +7,6 @@ import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText, BoxLocal
 import Localization from '../../components/Localization';
 
 export default function Home() {
-
     return (
         <Container>
             <Header>

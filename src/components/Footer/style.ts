@@ -8,7 +8,6 @@ display: flex;
 align-items: center;
 justify-self: center;
 
-
 @media screen and (max-width:830px) {
     flex-direction: column;
     justify-content: space-between;

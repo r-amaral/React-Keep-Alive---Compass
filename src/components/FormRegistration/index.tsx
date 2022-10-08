@@ -1,22 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonRegistration, ContainerEmail, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
 import { useCollectionRef } from '../../firebaseConfig'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from '../../firebaseConfig';
+import { UserContext } from "../../common/context/RegistrationData";
 
 export default function FormRegistration() {
 
     const navigate = useNavigate();
 
+    const {
+        name,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        setName,
+        setLastName,
+        setEmail,
+        setPassword,
+        setConfirmPassword
+    } = useContext(UserContext);
+
     const [fade, setFade] = useState(false);
-    const [name, setName] = useState<any>('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState<any>(false);
 
     const validate = (event: FormEvent<HTMLFormElement>) => {
