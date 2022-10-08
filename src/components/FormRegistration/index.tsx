@@ -1,34 +1,77 @@
 import { useNavigate } from "react-router-dom";
-import { ButtonRegistration, ContainerEmail, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection } from "./style";
-import React, { useState } from "react";
+import { ButtonRegistration, ContainerEmail, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
+import { FormEvent, useState } from "react";
 import PasswordNeeds from "./PasswordNeeds";
+import { addDoc } from "firebase/firestore";
+import { useCollectionRef } from '../../firebaseConfig'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from '../../firebaseConfig';
 
 export default function FormRegistration() {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const [password, setPassowd] = useState('');
     const [fade, setFade] = useState(false);
+    const [name, setName] = useState<any>('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState<any>(false);
+
+    const validate = (event: FormEvent<HTMLFormElement>) => {
+
+        event.preventDefault();
+
+        let regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+        let regStrongPassword = /^(?=.*[A-Z])(?=.*[\W|_])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
+
+        if (name.length <= 3) return setError(true)
+        if (lastName.length <= 3) return setError(true)
+        if (!regEmail.test(email)) return setError(true)
+        if (!regStrongPassword.test(password)) return setError(true)
+        if (confirmPassword !== password) return setError(true)
+
+        createUser()
+    }
+
+    const createUser = async () => {
+
+        const auth = getAuth(app);
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => addDoc(useCollectionRef, {
+                name,
+                lastName,
+                email,
+                password
+            }))
+            .then(() => navigate('/'))
+            .catch((error) => console.log(error));
+    }
 
     return (
-        <FormRegistrationContainer>
+        <FormRegistrationContainer onSubmit={validate}>
             <FormTitle>Cadastro</FormTitle>
             <ContainerName>
-                <InputName type='text' placeholder='Nome' required />
-                <InputName type='text' placeholder='Sobrenome' required />
+                <InputName onChange={event => setName(event.target.value)} type='text' placeholder='Nome' required />
+                <InputName onChange={event => setLastName(event.target.value)} type='text' placeholder='Sobrenome' required />
             </ContainerName>
             <ContainerEmail>
-                <InputEmail type='text' placeholder='Email' required />
+                <InputEmail onChange={event => setEmail(event.target.value)} type='text' placeholder='Email' required />
                 <InputEmail
-                    onChange={event => setPassowd(event.target.value)}
+                    onChange={event => setPassword(event.target.value)}
                     onBlur={() => setFade(false)}
                     onFocus={() => setFade(true)}
-                    type='text' placeholder='Senha' required />
+                    type='text' placeholder='Senha' required
+                />
                 <PasswordNeeds password={password} fade={fade} />
-                <InputEmail type='password' placeholder='Confirmar Senha' required />
+                <InputEmail onChange={event => setConfirmPassword(event.target.value)} type='password' placeholder='Confirmar Senha' required />
             </ContainerEmail>
 
-            <ButtonRegistration>Cadastrar</ButtonRegistration>
+            {error && <InvalidText>Ops, credenciais incorretas. Tente novamente!</InvalidText>}
+            <ButtonRegistration error={error}>Cadastrar</ButtonRegistration>
+
             <FormLink>Caso você possua cadastro, <FormRedirection onClick={() => navigate('/')}>clique aqui</FormRedirection></FormLink>
         </FormRegistrationContainer >
     )

@@ -4,6 +4,7 @@ import compassLogoMobile from '../../assets/images/Logo-Compass.png';
 import { Content, H1, Paragraph, Banner, Section, CompassLogo, CompassLogoMobile, Header } from './style';
 
 export default function Login() {
+
   return (
     <Section>
       <Content>

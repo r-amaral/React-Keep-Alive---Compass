@@ -3,52 +3,56 @@ import Button from '../Button';
 import Input from '../Input';
 import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
+// import { getDocs } from "firebase/firestore";
+// import { useCollectionRef } from '../../firebaseConfig';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Form() {
 
-    const [user, setUser] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [logged, setLogged] = useState<boolean>(false);
+    const [loggedError, setErrorLogged] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
-    const validationInput = (event: FormEvent<HTMLFormElement>) => {
+    const loginUser = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
 
-        let regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
+        // const data = await getDocs(useCollectionRef);
+        // const users = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }))
 
-        if (regEmail.test(user) && password.length > 3) {
-            setLogged(false)
-            navigate('/home')
-        } else setLogged(true)
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => navigate('/home'))
+            .catch((error) => setErrorLogged(true));
     }
 
     return (
-        <FormLogin onSubmit={validationInput}>
+        <FormLogin onSubmit={loginUser}>
             <FormTitle>Login</FormTitle>
             <ContainerInput>
                 <Input
-                    onChange={(event: any) => setUser(event.target.value)}
+                    onChange={(event: any) => setEmail(event.target.value)}
                     type='text'
                     placeholder='Usuário'
-                    invalidLogin={logged}
+                    invalidLogin={loggedError}
                 />
-                <Icon Icon={user} user />
+                <Icon Icon={email} user />
             </ContainerInput>
             <ContainerInput>
                 <Input
                     onChange={(event: any) => setPassword(event.target.value)}
                     type='password'
                     placeholder='Senha'
-                    invalidLogin={logged}
+                    invalidLogin={loggedError}
                 />
                 <Icon Icon={password} user={false} />
             </ContainerInput>
 
-            {logged && <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText>}
+            {loggedError && <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText>}
 
-            <Button logged={logged}>Continuar</Button>
+            <Button logged={loggedError}>Continuar</Button>
 
             <FormLink>Caso você não possua um cadastro, <FormRedirection onClick={() => navigate('/registration')}>clique aqui</FormRedirection></FormLink>
         </FormLogin >

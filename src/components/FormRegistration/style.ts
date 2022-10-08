@@ -3,6 +3,7 @@ import Input from '../Input';
 import Button from '../Button';
 import { secondaryColor } from '../UI/variables';
 import { primaryColor } from '../UI/variables';
+import { invalidColor } from '../UI/variables';
 
 export const FormRegistrationContainer = styled.form`
 display:flex;
@@ -39,9 +40,18 @@ gap: 32px;
 `
 
 export const InputName = styled(Input)`
-border: 1px solid ${secondaryColor};
+border: 1px solid secondaryColor;
 width: 50%;
 padding-right: 20px;
+`
+
+export const InvalidText = styled.span`
+    align-self:center;
+    margin-top: 28px;
+    color: ${invalidColor};
+    text-align: center;
+    font-weight:700;
+    width: 70%;
 `
 
 export const InputEmail = styled(Input)`
@@ -51,8 +61,8 @@ export const InputEmail = styled(Input)`
 }
 `
 
-export const ButtonRegistration = styled(Button)`
-margin-top: 50px;
+export const ButtonRegistration = styled(Button) <{ error: boolean }>`
+margin-top: ${({ error }) => error ? '28px' : '50px'};
 `
 
 export const FormLink = styled.span`
