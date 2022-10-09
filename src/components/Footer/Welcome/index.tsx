@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import { UserContext } from "../../../common/context/RegistrationData";
+import { AuthContext } from '../../../common/context/AuthContext';
 import { Container, Title, Name } from './style';
 
-export default function Wellcome() {
-    const { name } = useContext(UserContext)
+export default function Welcome() {
+    const { nameHome } = useContext(AuthContext)
     return (
         <Container>
             <Title>Bem Vindo(a)</Title>
-            <Name>{name}</Name>
+            <Name>{nameHome}</Name>
         </Container>
     )
 }

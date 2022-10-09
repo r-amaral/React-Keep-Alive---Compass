@@ -1,3 +1,4 @@
+import { getAuth } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Text, Box, Time, Seconds } from './style'
@@ -5,14 +6,16 @@ import { Container, Text, Box, Time, Seconds } from './style'
 export default function Refresh() {
 
     const [time, setTime] = useState<number>(60);
+    const auth = getAuth();
+
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setTime(time - 1);
-    //         if (time == 0) navigate('/');
-    //     }, 1000);
-    // }, [time]);
+    useEffect(() => {
+        setTimeout(() => {
+            setTime(time - 1);
+            if (time == 0) auth.signOut().then(() => navigate('/'));
+        }, 1000);
+    }, [time]);
 
     return (
         <Container>

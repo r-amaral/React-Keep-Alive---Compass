@@ -1,16 +1,11 @@
-import { FormEvent, useState, useContext } from 'react';
+import { FormEvent, useState } from 'react';
 import Button from '../Button';
 import Input from '../Input';
 import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
-import { getDocs } from "firebase/firestore";
-import { useCollectionRef } from '../../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { UserContext } from "../../common/context/RegistrationData";
 
 export default function Form() {
-
-    const { setName }: any = useContext(UserContext)
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -18,22 +13,16 @@ export default function Form() {
 
     const navigate = useNavigate();
 
+    const auth = getAuth();
+    auth.signOut()
+
     const loginUser = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
 
-        const data = await getDocs(useCollectionRef);
-        const users = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }))
-        const user = users.find(element => element.email === email)
-
-        const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                setName(user.name)
-                navigate('/home')
-            }
-            )
-            .catch((error) => setErrorLogged(true));
+            .then(() => navigate('/home'))
+            .catch(() => setErrorLogged(true));
     }
 
     return (
@@ -43,7 +32,7 @@ export default function Form() {
                 <Input
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
                     type='text'
-                    placeholder='Usuário'
+                    placeholder='Email'
                     invalidLogin={loggedError}
                 />
                 <Icon Icon={email} user />

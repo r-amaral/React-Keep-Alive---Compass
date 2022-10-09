@@ -41,6 +41,7 @@ text-align: center;
 margin:0 0 25px 0;
 width: 100%;
 }
+
 @media screen and (max-height:500px) {
 margin-left:0%;
 width: 100%;

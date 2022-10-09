@@ -2,13 +2,13 @@ import ButtonsFooter from './Buttons';
 import FooterDescription from './Description';
 import Refresh from './Refresh';
 import { Container, FooterButtons } from './style'
-import Wellcome from './Welcome';
+import Welcome from './Welcome';
 
 export default function Footer() {
 
     return (
         <Container>
-            <Wellcome />
+            <Welcome />
             <FooterDescription />
             <FooterButtons>
                 <Refresh />

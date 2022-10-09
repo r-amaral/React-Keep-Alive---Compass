@@ -16,11 +16,7 @@ export default function Router() {
                     <Registration />
                 </RegistrationProvider>}
             />
-            <Route path='/home' element={
-                <RegistrationProvider>
-                    <Home />
-                </RegistrationProvider>}
-            />
+            <Route path='/home' element={<Home />} />
         </Routes>
     )
 }

@@ -22,7 +22,7 @@ export default function RegistrationProvider({ children }: any) {
                 password,
                 setPassword,
                 confirmPassword,
-                setConfirmPassword
+                setConfirmPassword,
             }}
         >
             {children}
