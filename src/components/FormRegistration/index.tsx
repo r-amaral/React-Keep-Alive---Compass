@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ButtonRegistration, ContainerEmail, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
+import { ButtonRegistration, ContainerInput, ContainerEmail, Eye, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
 import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
@@ -24,8 +24,10 @@ export default function FormRegistration() {
         setConfirmPassword
     } = useContext(UserContext);
 
-    const [fade, setFade] = useState(false);
+    const [fade, setFade] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
 
     const [errorStyle, setErrorStyle] = useState({
         name: false,
@@ -92,15 +94,27 @@ export default function FormRegistration() {
             </ContainerName>
             <ContainerEmail>
                 <InputEmail error={errorStyle.email} onChange={event => setEmail(event.target.value)} type='text' placeholder='Email' required />
-                <InputEmail
-                    error={errorStyle.password}
-                    onChange={event => setPassword(event.target.value)}
-                    onBlur={() => setFade(false)}
-                    onFocus={() => setFade(true)}
-                    type='password' placeholder='Senha' required
-                />
+                <ContainerInput>
+                    <InputEmail
+                        error={errorStyle.password}
+                        onChange={event => setPassword(event.target.value)}
+                        onBlur={() => setFade(false)}
+                        onFocus={() => setFade(true)}
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder='Senha' required
+                    />
+                    <Eye onPointerDown={() => setShowPassword(true)} onPointerUp={() => setShowPassword(false)} />
+                </ContainerInput>
                 <PasswordNeeds password={password} fade={fade} />
-                <InputEmail error={errorStyle.confirmPassword} onChange={event => setConfirmPassword(event.target.value)} type='password' placeholder='Confirmar Senha' required />
+                <ContainerInput>
+                    <InputEmail
+                        error={errorStyle.confirmPassword}
+                        onChange={event => setConfirmPassword(event.target.value)}
+                        type={showConfirmPassword ? 'text' : 'password'}
+                        placeholder='Confirmar Senha' required
+                    />
+                    <Eye onPointerDown={() => setShowConfirmPassword(true)} onPointerUp={() => setShowConfirmPassword(false)} />
+                </ContainerInput>
             </ContainerEmail>
 
             {error && <InvalidText>{error}</InvalidText>}

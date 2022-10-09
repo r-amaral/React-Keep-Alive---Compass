@@ -18,6 +18,7 @@ top:170px;
 display:flex;
 justify-content: center;
 box-shadow: 0 3px 6px -4px black;
+z-index: 1000;
 `
 export const Arrow = styled.span`
 position: absolute;

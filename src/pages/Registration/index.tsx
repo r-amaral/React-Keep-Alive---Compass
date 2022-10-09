@@ -10,7 +10,7 @@ export default function Registration() {
             <Content>
                 <CompassLogoMobile src={compassLogoMobile} alt="Logo da compasso" />
                 <HeaderRegistration>
-                    <H1>Olá</H1>
+                    <H1>Olá,</H1>
                     <Paragraph>Para continuar navegando de forma segura, efetue o cadastro na rede.</Paragraph>
                 </HeaderRegistration>
                 <FormRegistration />

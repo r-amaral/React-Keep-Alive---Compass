@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Input from '../Input';
 import Button from '../Button';
 import { primaryColor, invalidColor, secondaryColor } from '../UI/variables';
+import EyeActive from '../../assets/icons/eyeActive.png';
+import EyeDesactive from '../../assets/icons/eyeDesactive.png';
 
 export const FormRegistrationContainer = styled.form`
 display:flex;
@@ -30,7 +32,7 @@ gap: 15px;
 export const ContainerEmail = styled.div`
 display: flex;
 position: relative;
-transition: 1s ease - out;
+transition: 1s ease-out;
 width: 100%;
 flex-direction: column;
 margin-top: 32px;
@@ -75,4 +77,23 @@ export const FormRedirection = styled.a`
 color: #FF2D04;
 font-weight:700;
 cursor:pointer;
+`
+
+export const ContainerInput = styled.div`
+width: 100%;
+position:relative;
+`
+
+export const Eye = styled.span`
+background: url(${EyeDesactive}) no-repeat;
+width: 16px;
+height:16px;
+top:22px;
+right:20px;
+position:absolute;
+cursor: pointer;
+
+&:active{
+    background: url(${EyeActive}) no-repeat;
+}
 `
