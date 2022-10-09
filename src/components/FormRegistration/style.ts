@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import Input from '../Input';
 import Button from '../Button';
-import { secondaryColor } from '../UI/variables';
-import { primaryColor } from '../UI/variables';
-import { invalidColor } from '../UI/variables';
+import { primaryColor, invalidColor, secondaryColor } from '../UI/variables';
 
 export const FormRegistrationContainer = styled.form`
 display:flex;
@@ -39,8 +37,8 @@ margin-top: 32px;
 gap: 32px;
 `
 
-export const InputName = styled(Input)`
-border: 1px solid secondaryColor;
+export const InputName = styled(Input) <{ error: boolean }>`
+border: 1px solid ${({ error }) => error ? invalidColor : secondaryColor};
 width: 50%;
 padding-right: 20px;
 `
@@ -54,14 +52,15 @@ export const InvalidText = styled.span`
     width: 70%;
 `
 
-export const InputEmail = styled(Input)`
+export const InputEmail = styled(Input) <{ error: boolean }>`
+border: 1px solid ${({ error }) => error ? invalidColor : secondaryColor};
 
 @media screen and (max-width: 768px){
     width: 100%;
 }
 `
 
-export const ButtonRegistration = styled(Button) <{ error: boolean }>`
+export const ButtonRegistration = styled(Button) <{ error: any }>`
 margin-top: ${({ error }) => error ? '28px' : '50px'};
 `
 

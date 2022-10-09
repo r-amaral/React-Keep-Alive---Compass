@@ -17,17 +17,12 @@ export default function AuthContextProvider({ children }: any) {
         const getUser = async () => {
 
             const data = await getDocs(useCollectionRef);
-            var usersDataBase = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }))
-            const userDataBase = usersDataBase.find(element => element.email === user?.email)
 
-            // user ? setNameHome(userDataBase.name) : console.log('User sing-out')
+            const usersDataBase = data.docs.map((doc): any => ({ ...doc.data(), id: doc.id }));
 
-            if (user) {
-                console.log(user)
-                setNameHome(userDataBase.name)
-            } else {
-                console.log('sing-out')
-            }
+            const userDataBase = usersDataBase.find(element => element.email === user?.email);
+
+            user ? setNameHome(userDataBase.name) : console.log('User sing-out');
         }
         getUser()
     });

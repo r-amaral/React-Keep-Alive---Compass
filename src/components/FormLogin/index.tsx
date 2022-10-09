@@ -7,11 +7,11 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Form() {
 
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [loggedError, setErrorLogged] = useState<boolean>(false);
-
-    const navigate = useNavigate();
 
     const auth = getAuth();
     auth.signOut()
@@ -47,7 +47,7 @@ export default function Form() {
                 <Icon Icon={password} user={false} />
             </ContainerInput>
 
-            {loggedError && <InvalidText>Ops, usuário ou senha inválidos. Tente novamente!</InvalidText>}
+            {loggedError && <InvalidText>Ops, email ou senha inválidos. Tente novamente!</InvalidText>}
 
             <Button logged={loggedError}>Continuar</Button>
 
