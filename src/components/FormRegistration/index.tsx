@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonRegistration, ContainerEmail, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
-import { FormEvent, useState, useContext, useEffect } from "react";
+import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
 import { useCollectionRef, app } from '../../firebaseConfig'
@@ -59,11 +59,9 @@ export default function FormRegistration() {
 
         setErrorStyle(ErrorObj);
 
-        Object.values(ErrorObj).forEach((attribute: any) => {
-            if (attribute === true) return setError(errorType.incorrectCredentials)
-        })
+        if (Object.values(ErrorObj).find((attribute: boolean) => attribute === true)) return
 
-        createUser()
+        createUser();
     }
 
     const createUser = async () => {
@@ -99,10 +97,10 @@ export default function FormRegistration() {
                     onChange={event => setPassword(event.target.value)}
                     onBlur={() => setFade(false)}
                     onFocus={() => setFade(true)}
-                    type='text' placeholder='Senha' required
+                    type='password' placeholder='Senha' required
                 />
                 <PasswordNeeds password={password} fade={fade} />
-                <InputEmail error={errorStyle.confirmPassword} onChange={event => setConfirmPassword(event.target.value)} type='text' placeholder='Confirmar Senha' required />
+                <InputEmail error={errorStyle.confirmPassword} onChange={event => setConfirmPassword(event.target.value)} type='password' placeholder='Confirmar Senha' required />
             </ContainerEmail>
 
             {error && <InvalidText>{error}</InvalidText>}
