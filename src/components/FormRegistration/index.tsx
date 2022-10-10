@@ -6,6 +6,7 @@ import { addDoc } from "firebase/firestore";
 import { useCollectionRef, app } from '../../firebaseConfig'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../../common/context/RegistrationData";
+import Loading from "../Loading";
 
 export default function FormRegistration() {
 
@@ -21,13 +22,15 @@ export default function FormRegistration() {
         setLastName,
         setEmail,
         setPassword,
-        setConfirmPassword
+        setConfirmPassword,
+        loading,
+        setLoading
     } = useContext(UserContext);
 
     const [fade, setFade] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
     const [errorStyle, setErrorStyle] = useState({
         name: false,
@@ -61,8 +64,9 @@ export default function FormRegistration() {
 
         setErrorStyle(ErrorObj);
 
-        if (Object.values(ErrorObj).find((attribute: boolean) => attribute === true)) return
+        if (Object.values(ErrorObj).find((attribute: boolean) => attribute === true)) return setError(errorType.incorrectCredentials);
 
+        setLoading(true);
         createUser();
     }
 
@@ -77,11 +81,16 @@ export default function FormRegistration() {
                 email,
                 password
             }))
-            .then(() => navigate('/'))
-            .catch((error) =>
+            .then(() => {
+                setLoading(false)
+                navigate('/')
+            })
+            .catch((error) => {
+                setLoading(false)
                 error.code == "auth/email-already-in-use"
                     ? setError(errorType.existingEmail)
                     : setError(errorType.incorrectCredentials)
+            }
             );
     }
 
@@ -121,6 +130,7 @@ export default function FormRegistration() {
             <ButtonRegistration error={error}>Cadastrar</ButtonRegistration>
 
             <FormLink>Caso você possua cadastro, <FormRedirection onClick={() => navigate('/')}>clique aqui</FormRedirection></FormLink>
+            {loading && <Loading>Loading...</Loading>}
         </FormRegistrationContainer >
     )
 }

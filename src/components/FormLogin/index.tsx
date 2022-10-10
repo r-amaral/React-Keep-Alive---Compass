@@ -1,17 +1,22 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import Button from '../Button';
 import Input from '../Input';
 import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Loading from '../Loading';
+import { UserContext } from '../../common/context/RegistrationData';
 
 export default function Form() {
 
     const navigate = useNavigate();
 
+    const { loading, setLoading } = useContext(UserContext);
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [loggedError, setErrorLogged] = useState<boolean>(false);
+
 
     const auth = getAuth();
     auth.signOut()
@@ -19,10 +24,18 @@ export default function Form() {
     const loginUser = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
+        setLoading(true);
 
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => navigate('/home'))
-            .catch(() => setErrorLogged(true));
+            .then(() => {
+                setLoading(false)
+                navigate('/home')
+            }
+            )
+            .catch(() => {
+                setLoading(false)
+                setErrorLogged(true)
+            });
     }
 
     return (
@@ -52,6 +65,8 @@ export default function Form() {
             <Button logged={loggedError}>Continuar</Button>
 
             <FormLink>Caso você não possua um cadastro, <FormRedirection onClick={() => navigate('/registration')}>clique aqui</FormRedirection></FormLink>
+
+            {loading && <Loading>Loading...</Loading>}
         </FormLogin >
     )
 }

@@ -9,6 +9,7 @@ export default function RegistrationProvider({ children }: any) {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
     return (
         <UserContext.Provider
@@ -23,6 +24,8 @@ export default function RegistrationProvider({ children }: any) {
                 setPassword,
                 confirmPassword,
                 setConfirmPassword,
+                loading,
+                setLoading
             }}
         >
             {children}
