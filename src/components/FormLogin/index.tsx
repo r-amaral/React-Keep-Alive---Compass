@@ -9,15 +9,15 @@ import { UserContext } from '../../common/context/RegistrationData';
 import { auth } from '../../firebaseConfig';
 
 export default function Form() {
+
     const navigate = useNavigate()
+    auth.signOut();
 
     const { loading, setLoading } = useContext(UserContext);
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [loggedError, setErrorLogged] = useState<boolean>(false);
-
-    auth.signOut()
 
     const loginUser = async (event: FormEvent<HTMLFormElement>) => {
 

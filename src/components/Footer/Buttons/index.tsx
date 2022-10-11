@@ -1,13 +1,10 @@
 import { Container, ContinueButton, LogoutButton } from './style';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebaseConfig';
-import { useContext } from 'react';
-import { AuthContext } from '../../../common/context/AuthContext';
 
 export default function ButtonsFooter() {
 
     const navigate = useNavigate();
-
 
     return (
         <Container>
