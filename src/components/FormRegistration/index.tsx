@@ -3,8 +3,8 @@ import { ButtonRegistration, ContainerInput, ContainerEmail, Eye, ContainerName,
 import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
-import { useCollectionRef, app } from '../../firebaseConfig'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useCollectionRef, auth } from '../../firebaseConfig'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../../common/context/RegistrationData";
 import Loading from "../Loading";
 
@@ -71,8 +71,6 @@ export default function FormRegistration() {
     }
 
     const createUser = async () => {
-
-        const auth = getAuth(app);
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => addDoc(useCollectionRef, {

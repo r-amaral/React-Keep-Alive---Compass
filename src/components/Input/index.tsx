@@ -13,6 +13,7 @@ const Input = styled.input<IInput>`
     padding-right: 45px;
     width: 100%;
     box-sizing: border-box;
+    outline:none;
 
     ::placeholder{
     color:${primaryColor}

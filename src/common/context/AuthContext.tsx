@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDocs } from "firebase/firestore";
-import { useCollectionRef } from '../../firebaseConfig';
+import { auth, useCollectionRef } from '../../firebaseConfig';
 
 export const AuthContext = createContext(null as any);
 AuthContext.displayName = "Authentication";
@@ -9,8 +9,6 @@ AuthContext.displayName = "Authentication";
 export default function AuthContextProvider({ children }: any) {
 
     const [nameHome, setNameHome] = useState<string>('');
-
-    const auth = getAuth();
 
     onAuthStateChanged(auth, (user: any) => {
 
@@ -22,7 +20,7 @@ export default function AuthContextProvider({ children }: any) {
 
             const userDataBase = usersDataBase.find(element => element.email === user?.email);
 
-            user ? setNameHome(userDataBase.name) : console.log('User sing-out');
+            user ? setNameHome(userDataBase.name) : console.log('Sing-out');
         }
         getUser()
     });

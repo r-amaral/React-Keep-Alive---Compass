@@ -4,6 +4,7 @@ import { Container, Title, Name } from './style';
 
 export default function Welcome() {
     const { nameHome } = useContext(AuthContext)
+
     return (
         <Container>
             <Title>Bem Vindo(a)</Title>

@@ -49,8 +49,8 @@ gap:5px;
 font-size:14px;
 font-weight:300;
 color: ${({ status }) => status ? 'green' : 'red'};
-
 `
+
 export const Icon = styled.i<{ status: boolean }>`
 display: inline-block;
 background-image:url(${({ status }) => status ? VIcon : XIcon});

@@ -3,13 +3,13 @@ import Button from '../Button';
 import Input from '../Input';
 import { FormTitle, FormLogin, ContainerInput, Icon, InvalidText, FormLink, FormRedirection } from './style';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Loading from '../Loading';
 import { UserContext } from '../../common/context/RegistrationData';
+import { auth } from '../../firebaseConfig';
 
 export default function Form() {
-
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const { loading, setLoading } = useContext(UserContext);
 
@@ -17,8 +17,6 @@ export default function Form() {
     const [password, setPassword] = useState<string>('');
     const [loggedError, setErrorLogged] = useState<boolean>(false);
 
-
-    const auth = getAuth();
     auth.signOut()
 
     const loginUser = async (event: FormEvent<HTMLFormElement>) => {

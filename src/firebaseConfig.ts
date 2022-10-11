@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
@@ -11,3 +12,5 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 export const useCollectionRef = collection(db, 'users')
+
+export const auth = getAuth(app);

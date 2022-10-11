@@ -1,8 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home'
 import Registration from './pages/Registration';
 import RegistrationProvider from './common/context/RegistrationData';
+import AuthContextProvider, { AuthContext } from './common/context/AuthContext';
+import { useContext } from 'react';
 export default function Router() {
     return (
         <Routes>
@@ -20,3 +22,4 @@ export default function Router() {
         </Routes>
     )
 }
+
