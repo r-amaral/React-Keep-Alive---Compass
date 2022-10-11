@@ -7,14 +7,13 @@ import { Container, ImgLogoCompass, Header, Section, MainLogo, BoxText, BoxLocal
 import Localization from '../../components/Localization';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../firebaseConfig';
 
 export default function Home() {
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setTimeout(() => !auth.currentUser && navigate('/'), 400)
+        if (localStorage.getItem('token') !== 'logged') navigate('/')
     }, [])
 
     return (

@@ -12,7 +12,10 @@ export default function Refresh() {
     useEffect(() => {
         setTimeout(() => {
             setTime(time - 1);
-            if (time == 0) auth.signOut().then(() => navigate('/'));
+            if (time == 0) auth.signOut().then(() => {
+                localStorage.setItem('token', 'loggedOut')
+                navigate('/')
+            });
         }, 1000);
     }, [time]);
 

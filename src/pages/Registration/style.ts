@@ -4,7 +4,7 @@ import banner from '../../assets/images/img.png';
 
 export const HeaderRegistration = styled.header`
 padding-bottom: 50px;
-  width: 100%;
+width: 100%;
 
 @media screen and (width:1024px) and (height:600px){
   padding-bottom:3vh;

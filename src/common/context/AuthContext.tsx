@@ -20,7 +20,7 @@ export default function AuthContextProvider({ children }: any) {
 
             const userDataBase = usersDataBase.find(element => element.email === user?.email);
 
-            user ? setNameHome(userDataBase.name) : console.log('Sing-out');
+            user ? setNameHome(userDataBase.fullName) : console.log('Sing-out');
         }
         getUser()
     });

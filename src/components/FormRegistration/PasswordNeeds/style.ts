@@ -14,7 +14,7 @@ margin:auto;
 max-width:200px;
 background: white;
 color: black;
-top:170px;
+top:100px;
 display:flex;
 justify-content: center;
 box-shadow: 0 3px 6px -4px black;

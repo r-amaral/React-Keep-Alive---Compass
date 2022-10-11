@@ -8,7 +8,7 @@ export default function Welcome() {
     return (
         <Container>
             <Title>Bem Vindo(a)</Title>
-            <Name>{nameHome}</Name>
+            <Name>{nameHome.split(' ')[0]}</Name>
         </Container>
     )
 }

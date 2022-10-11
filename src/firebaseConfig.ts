@@ -3,10 +3,9 @@ import { getAuth } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyCbHlefkaixi_NRQWwv_sf6XR_jxLeUcsk",
-    authDomain: "keepalive-db.firebaseapp.com",
-    databaseURL: "https://keepalive-db-default-rtdb.firebaseio.com",
-    projectId: "keepalive-db",
+    apiKey: "AIzaSyAuDl80-UMmWOGrodzri4ySy11Rz7LHp9s",
+    authDomain: "keepalive-999cc.firebaseapp.com",
+    projectId: "keepalive-999cc",
 };
 
 export const app = initializeApp(firebaseConfig)

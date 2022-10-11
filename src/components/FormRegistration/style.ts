@@ -8,6 +8,7 @@ import EyeDesactive from '../../assets/icons/eyeDesactive.png';
 export const FormRegistrationContainer = styled.form`
 display:flex;
 flex-direction: column;
+width:100%;
 `
 
 export const FormTitle = styled.h3`
@@ -15,34 +16,18 @@ export const FormTitle = styled.h3`
     font-size: 30px;
     color: ${primaryColor};
     margin: 0;
+    margin-bottom:35px;
 
 @media screen and (max-width:425px){
     font-size: 26px;
 }
 `
 
-export const ContainerName = styled.div`
+export const ContainerInputs = styled.div`
 width: 100%;
 display: flex;
-flex-direction: row;
-margin-top: 32px;
-gap: 15px;
-`
-
-export const ContainerEmail = styled.div`
-display: flex;
-position: relative;
-transition: 1s ease-out;
-width: 100%;
 flex-direction: column;
-margin-top: 32px;
-gap: 32px;
-`
-
-export const InputName = styled(Input) <{ error: boolean }>`
-border: 1px solid ${({ error }) => error ? invalidColor : secondaryColor};
-width: 50%;
-padding-right: 20px;
+gap: 25px;
 `
 
 export const InvalidText = styled.span`
@@ -54,12 +39,16 @@ export const InvalidText = styled.span`
     width: 70%;
 `
 
-export const InputEmail = styled(Input) <{ error: boolean }>`
+export const InputRegistration = styled(Input) <{ error: boolean }>`
 border: 1px solid ${({ error }) => error ? invalidColor : secondaryColor};
 
 @media screen and (max-width: 768px){
     width: 100%;
 }
+`
+export const LabelRegistration = styled.label<{ error: boolean }>`
+    font-size:16px;
+    color: ${({ error }) => error ? invalidColor : secondaryColor};
 `
 
 export const ButtonRegistration = styled(Button) <{ error: any }>`
@@ -82,13 +71,16 @@ cursor:pointer;
 export const ContainerInput = styled.div`
 width: 100%;
 position:relative;
+display: flex;
+flex-direction:column;
+gap:5px;
 `
 
 export const Eye = styled.span`
 background: url(${EyeDesactive}) no-repeat;
 width: 16px;
 height:16px;
-top:22px;
+top:46px;
 right:20px;
 position:absolute;
 cursor: pointer;

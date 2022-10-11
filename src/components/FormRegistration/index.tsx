@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ButtonRegistration, ContainerInput, ContainerEmail, Eye, ContainerName, FormRegistrationContainer, InputEmail, InputName, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
+import { ButtonRegistration, LabelRegistration, ContainerInput, ContainerInputs, Eye, FormRegistrationContainer, InputRegistration, FormTitle, FormLink, FormRedirection, InvalidText } from "./style";
 import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
@@ -13,13 +13,11 @@ export default function FormRegistration() {
     const navigate = useNavigate();
 
     const {
-        name,
-        lastName,
+        fullName,
         email,
         password,
         confirmPassword,
-        setName,
-        setLastName,
+        setFullName,
         setEmail,
         setPassword,
         setConfirmPassword,
@@ -33,8 +31,7 @@ export default function FormRegistration() {
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
     const [errorStyle, setErrorStyle] = useState({
-        name: false,
-        lastName: false,
+        fullName: false,
         email: false,
         password: false,
         confirmPassword: false
@@ -50,13 +47,12 @@ export default function FormRegistration() {
         event.preventDefault();
 
         const regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-        const regName = /^[a-zA-Z]{3,15}$/;
+        const regName = /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})$/;
         const regStrongPassword = /^(?=.*[A-Z])(?=.*[\W|_])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
 
         const ErrorObj = {
             ...errorStyle,
-            name: regName.test(name) ? false : true,
-            lastName: regName.test(lastName) ? false : true,
+            fullName: regName.test(fullName) ? false : true,
             email: regEmail.test(email) ? false : true,
             password: regStrongPassword.test(password) ? false : true,
             confirmPassword: confirmPassword === password ? false : true
@@ -74,8 +70,7 @@ export default function FormRegistration() {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => addDoc(useCollectionRef, {
-                name,
-                lastName,
+                fullName,
                 email,
                 password
             }))
@@ -95,14 +90,19 @@ export default function FormRegistration() {
     return (
         <FormRegistrationContainer onSubmit={validate}>
             <FormTitle>Cadastro</FormTitle>
-            <ContainerName>
-                <InputName error={errorStyle.name} onChange={event => setName(event.target.value)} type='text' placeholder='Nome' required />
-                <InputName error={errorStyle.lastName} onChange={event => setLastName(event.target.value)} type='text' placeholder='Sobrenome' required />
-            </ContainerName>
-            <ContainerEmail>
-                <InputEmail error={errorStyle.email} onChange={event => setEmail(event.target.value)} type='text' placeholder='Email' required />
+            <ContainerInputs>
                 <ContainerInput>
-                    <InputEmail
+                    <LabelRegistration error={errorStyle.fullName} htmlFor="fullName">Nome Completo</LabelRegistration>
+                    <InputRegistration id='fullName' error={errorStyle.fullName} onChange={event => setFullName(event.target.value)} type='text' placeholder='Nome' required />
+                </ContainerInput>
+                <ContainerInput>
+                    <LabelRegistration error={errorStyle.email} htmlFor="email">Email</LabelRegistration>
+                    <InputRegistration id='email' error={errorStyle.email} onChange={event => setEmail(event.target.value)} type='text' placeholder='Email' required />
+                </ContainerInput>
+                <ContainerInput>
+                    <LabelRegistration error={errorStyle.password} htmlFor="password">Senha</LabelRegistration>
+                    <InputRegistration
+                        id='password'
                         error={errorStyle.password}
                         onChange={event => setPassword(event.target.value)}
                         onBlur={() => setFade(false)}
@@ -111,10 +111,12 @@ export default function FormRegistration() {
                         placeholder='Senha' required
                     />
                     <Eye onPointerDown={() => setShowPassword(true)} onPointerUp={() => setShowPassword(false)} />
+                    <PasswordNeeds password={password} fade={fade} />
                 </ContainerInput>
-                <PasswordNeeds password={password} fade={fade} />
                 <ContainerInput>
-                    <InputEmail
+                    <LabelRegistration error={errorStyle.confirmPassword} htmlFor="confirmPassword">Confirmar senha</LabelRegistration>
+                    <InputRegistration
+                        id='confirmPassword'
                         error={errorStyle.confirmPassword}
                         onChange={event => setConfirmPassword(event.target.value)}
                         type={showConfirmPassword ? 'text' : 'password'}
@@ -122,11 +124,9 @@ export default function FormRegistration() {
                     />
                     <Eye onPointerDown={() => setShowConfirmPassword(true)} onPointerUp={() => setShowConfirmPassword(false)} />
                 </ContainerInput>
-            </ContainerEmail>
-
+            </ContainerInputs>
             {error && <InvalidText>{error}</InvalidText>}
             <ButtonRegistration error={error}>Cadastrar</ButtonRegistration>
-
             <FormLink>Caso você possua cadastro, <FormRedirection onClick={() => navigate('/')}>clique aqui</FormRedirection></FormLink>
             {loading && <Loading>Loading...</Loading>}
         </FormRegistrationContainer >

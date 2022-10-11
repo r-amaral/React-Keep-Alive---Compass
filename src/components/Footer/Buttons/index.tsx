@@ -9,7 +9,11 @@ export default function ButtonsFooter() {
     return (
         <Container>
             <ContinueButton onClick={() => window.open('https://google.com', '_blank')}><span>Continuar</span> <span>Navegando</span></ContinueButton>
-            <LogoutButton onClick={() => auth.signOut().then(() => navigate('/'))}>Logout</LogoutButton>
+            <LogoutButton onClick={() => auth.signOut().then(() => {
+                navigate('/')
+                localStorage.setItem('token', 'loggedOut')
+            })
+            }>Logout</LogoutButton>
         </Container >
     )
 }
