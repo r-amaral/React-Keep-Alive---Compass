@@ -3,10 +3,11 @@ import { ButtonRegistration, LabelRegistration, ContainerInput, ContainerInputs,
 import { FormEvent, useState, useContext } from "react";
 import PasswordNeeds from "./PasswordNeeds";
 import { addDoc } from "firebase/firestore";
-import { useCollectionRef, auth } from '../../firebaseConfig'
+import { useCollectionRef, auth } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../../common/context/RegistrationData";
 import Loading from "../Loading";
+import RegistrattionModal from "./RegistrationModal";
 
 export default function FormRegistration() {
 
@@ -29,6 +30,7 @@ export default function FormRegistration() {
     const [error, setError] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+    const [successfulRegistration, setSuccessfulRegistration] = useState<boolean>(false);
 
     const [errorStyle, setErrorStyle] = useState({
         fullName: false,
@@ -63,6 +65,7 @@ export default function FormRegistration() {
         if (Object.values(ErrorObj).find((attribute: boolean) => attribute === true)) return setError(errorType.incorrectCredentials);
 
         setLoading(true);
+
         createUser();
     }
 
@@ -76,7 +79,7 @@ export default function FormRegistration() {
             }))
             .then(() => {
                 setLoading(false)
-                navigate('/')
+                setSuccessfulRegistration(true);
             })
             .catch((error) => {
                 setLoading(false)
@@ -96,7 +99,7 @@ export default function FormRegistration() {
                     <InputRegistration id='fullName' error={errorStyle.fullName} onChange={event => setFullName(event.target.value)} type='text' placeholder='Nome' required />
                 </ContainerInput>
                 <ContainerInput>
-                    <LabelRegistration error={errorStyle.email} htmlFor="email">Email</LabelRegistration>
+                    <LabelRegistration error={errorStyle.email} htmlFor="email">E-mail</LabelRegistration>
                     <InputRegistration id='email' error={errorStyle.email} onChange={event => setEmail(event.target.value)} type='text' placeholder='Email' required />
                 </ContainerInput>
                 <ContainerInput>
@@ -129,6 +132,7 @@ export default function FormRegistration() {
             <ButtonRegistration error={error}>Cadastrar</ButtonRegistration>
             <FormLink>Caso você possua cadastro, <FormRedirection onClick={() => navigate('/')}>clique aqui</FormRedirection></FormLink>
             {loading && <Loading>Loading...</Loading>}
+            {successfulRegistration && <RegistrattionModal />}
         </FormRegistrationContainer >
     )
 }
