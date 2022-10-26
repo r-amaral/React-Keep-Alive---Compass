@@ -2,7 +2,6 @@ import LogoCompass from '../../../assets/images/Logo-Compass.png';
 import { useNavigate } from 'react-router-dom';
 import { Container, Modal, LogoCompassElement, ButtonModal, TextModal } from './styled';
 
-
 export default function RegistrattionModal() {
 
     const navigate = useNavigate()

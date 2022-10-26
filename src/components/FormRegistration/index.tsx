@@ -49,7 +49,7 @@ export default function FormRegistration() {
         event.preventDefault();
 
         const regEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-        const regName = /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})$/;
+        const regName = /^([A-Za-z\u00C0-\u017F´]\s?){3,40}$/g
         const regStrongPassword = /^(?=.*[A-Z])(?=.*[\W|_])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
 
         const ErrorObj = {
